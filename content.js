@@ -322,7 +322,11 @@ function checkCorrect(replyData, answerData) {
       break;
     }
   }
-  document.getElementById("reply_correct").innerText = "Correct: " + str;
+  return str;
+}
+
+function handlePercent(correct, answer) {
+  return (correct.length / answer.length) * 100;
 }
 
 function checkReply() {
@@ -335,10 +339,23 @@ function checkReply() {
       closeModal();
     } else {
       restartQS();
+
+      // Hiển thị lên giao diện.
+      const correct = checkCorrect(rep, answer);
+      const percentCorrect = handlePercent(correct, answer);
+
       document.getElementById("reply").innerText = "Reply: " + rep;
-      checkCorrect(rep, answer);
+      document.getElementById("reply_correct").innerText =
+        "Correct: " +
+        correct +
+        " --> " +
+        Number.parseFloat(percentCorrect).toFixed(2) +
+        "%";
       document.getElementById("answer").innerText = "Answer: " + answer;
+
+      // Show Answer
       document.getElementById("id_footer").style.display = "block";
+      // Reset
       document.getElementById("input_rep").value = "";
 
       console.log("Bạn nhập:", rep);
@@ -417,7 +434,7 @@ function createElementPage() {
 				<div style="width:100%;display: flex;">
 					<h6 id="answer" style="text-align: left;color:rgba(255, 255, 255, 0.46);" class="id_h6"></h6>
           <button id="run_speak_answer"
-						style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Speak)~</button>
+						style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;"><span style="color:#333;">~(Speak)~</span></button>
 				</div>
 			</div>
 		</div>

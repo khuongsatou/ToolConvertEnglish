@@ -5,7 +5,7 @@
   "permissions": ["tabs","activeTab", "storage","https://www.facebook.com/*"],
   "content_scripts" : [
     {
-      "matches" : ["https://www.facebook.com/*","https://animehay.tv/*","https://vuighe.net/","https://www.youtube.com/","https://anime47.com/"],
+      "matches" : ["https://www.facebook.com/*","https://animehay.tv/*","https://vuighe.net/","https://www.youtube.com/","https://anime47.com/","https://xem.vn/","https://mail.google.com/mail/u/0/","https://fptplay.vn/"],
       "js" : ["content.js"],
       "css" :["content.css"]
     }
