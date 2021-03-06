@@ -266,12 +266,21 @@ function getQuestion() {
   return { content: qs, number_rand: randNumber };
 }
 
-function textToSpeak() {
-  const text = document.getElementById("question").innerText;
+function textToSpeak(text) {
   console.log(text);
   const msg = new SpeechSynthesisUtterance(text);
   msg.rate = 0.6;
   window.speechSynthesis.speak(msg);
+}
+
+function speakQS() {
+  const text = document.getElementById("question").innerText;
+  textToSpeak(text);
+}
+
+function speakAnswer() {
+  const text = document.getElementById("answer").innerText;
+  textToSpeak(text);
 }
 
 function handleModal() {
@@ -330,6 +339,7 @@ function checkReply() {
       checkCorrect(rep, answer);
       document.getElementById("answer").innerText = "Answer: " + answer;
       document.getElementById("id_footer").style.display = "block";
+      document.getElementById("input_rep").value = "";
 
       console.log("Bạn nhập:", rep);
       console.log("Đáp án:", answer);
@@ -350,9 +360,12 @@ function eventClick() {
   var form = document.getElementById("myForm");
   form.addEventListener("submit", handleForm);
 
+  document.getElementById("run_speak_qs").addEventListener("click", speakQS);
+
   document
-    .getElementById("run_speek_qs")
-    .addEventListener("click", textToSpeak);
+    .getElementById("run_speak_answer")
+    .addEventListener("click", speakAnswer);
+
   const run_speak = document.getElementById("run_speak");
   run_speak.addEventListener("click", checkReply);
 }
@@ -374,8 +387,8 @@ function createElementPage() {
 				<div style="display: flex;flex-direction: row;">
 					<h2 id="question" style="color:white;" class="id_h2"></h2>
 					<input id="number_rand" value="" type="hidden"></input>
-					<button id="run_speek_qs"
-						style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Speek)~</button>
+					<button id="run_speak_qs"
+						style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Speak)~</button>
 
 				</div>
 
@@ -403,6 +416,8 @@ function createElementPage() {
 				</div>
 				<div style="width:100%;display: flex;">
 					<h6 id="answer" style="text-align: left;color:rgba(255, 255, 255, 0.46);" class="id_h6"></h6>
+          <button id="run_speak_answer"
+						style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Speak)~</button>
 				</div>
 			</div>
 		</div>
