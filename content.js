@@ -327,11 +327,20 @@ function checkReply() {
   }
 }
 
+function handleForm(event) {
+  event.preventDefault();
+  checkReply();
+}
+
 function eventClick() {
+  var form = document.getElementById("myForm");
+  form.addEventListener("submit", handleForm);
+
   document
     .getElementById("run_speek_qs")
     .addEventListener("click", textToSpeak);
-  document.getElementById("run_speak").addEventListener("click", checkReply);
+  const run_speak = document.getElementById("run_speak");
+  run_speak.addEventListener("click", checkReply);
 }
 
 function initQuestion() {
@@ -358,7 +367,7 @@ function createElementPage() {
 
 			</div>
 			<div class="modal-body">
-				<form action="#">
+				<form action="#" id="myForm">
 					<div class="fomrgroup">
 						<input type="text" name="input_rep" id="input_rep" value="" style="width:100%;" class="input_form">
 					</div>
@@ -385,7 +394,6 @@ function createElementPage() {
 	</div>`;
 
   const node = document.createElement("div");
-  // node.innerHTML += data;
   node.innerHTML += html_page;
   document.body.appendChild(node);
 }
