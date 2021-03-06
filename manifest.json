@@ -1,5 +1,5 @@
 {
-  "name": "My Extentison",
+  "name": "English Extentison 1",
   "version": "1.1",
   "description": "Đây là tiện ích mở rộng đầu tiên của tôi",
   "permissions": ["tabs","activeTab", "storage","https://www.facebook.com/*"],
@@ -10,7 +10,7 @@
       "css" :["content.css"]
     }
   ]
-  ,  
+  ,
   "browser_action": {
       "default_title": "My Extentison",
       "default_icon": "icon.png",

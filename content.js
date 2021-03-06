@@ -16,18 +16,21 @@ const question_1 = [
       "sure, i studied at cao thang technical college and i graduated in 2019 with a degree in automobile engineering.",
     vi:
       "chắc chắn rồi, tôi học trường cao đẳng kỹ thuật cao thắng và tôi tốt nghiệp năm 2019 với bằng kỹ sư ô tô.",
+    embed: `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/987427831&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/nvkhuongenglish" title="Khương Nguyễn" target="_blank" style="color: #cccccc; text-decoration: none;">Khương Nguyễn</a> · <a href="https://soundcloud.com/nvkhuongenglish/0-0-6x-22-00-30-184458" title="0 0.6x 22:00:30.184458" target="_blank" style="color: #cccccc; text-decoration: none;">0 0.6x 22:00:30.184458</a></div>`,
   },
   {
     en:
       'at school, i took part in "mini racing car" competition and some other volunteer activities such as green summer campaign, and blood donation.',
     vi:
       'ở trường, em tham gia cuộc thi "đua xe mini" và một số hoạt động tình nguyện khác như chiến dịch mùa hè xanh, hiến máu nhân đạo.',
+    embed: `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/987427822&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/nvkhuongenglish" title="Khương Nguyễn" target="_blank" style="color: #cccccc; text-decoration: none;">Khương Nguyễn</a> · <a href="https://soundcloud.com/nvkhuongenglish/1-0-6x-22-00-30-184458" title="1 0.6x 22:00:30.184458" target="_blank" style="color: #cccccc; text-decoration: none;">1 0.6x 22:00:30.184458</a></div>`,
   },
   {
     en:
       "in the five final year, i have had an internship at toyota factory for 6 months helps me get more experiences in repairing automobiles.",
     vi:
       "năm năm cuối, tôi đã có 6 tháng thực tập tại nhà máy toyota giúp tôi có thêm kinh nghiệm sửa chữa ô tô.",
+    embed: `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/987427813&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/nvkhuongenglish" title="Khương Nguyễn" target="_blank" style="color: #cccccc; text-decoration: none;">Khương Nguyễn</a> · <a href="https://soundcloud.com/nvkhuongenglish/2-0-6x-22-00-30-184458" title="2 0.6x 22:00:30.184458" target="_blank" style="color: #cccccc; text-decoration: none;">2 0.6x 22:00:30.184458</a></div>`,
   },
 ];
 
@@ -205,6 +208,7 @@ const question_9 = [
 ];
 
 const qsNum = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 const qsRep = {
   question_1: question_1,
   question_2: question_2,
@@ -225,36 +229,138 @@ const qsRep = {
 function getQuestion() {
   const randNumber = Math.floor(Math.random() * list_question.length); //[0,8]
   const qs = list_question[randNumber];
-  const answer = qsRep[`question_${randNumber + 1}`];
-  console.log(randNumber);
-  return { content: qs, rand: randNumber, answer: answer };
+
+  return { content: qs, number_rand: randNumber };
 }
 
-function checkQuestion(qs, rep) {
-  if (rep === qs.answer[0].en) {
-    console.log("Kết thúc", "Success");
-  } else {
-    console.log("Bạn nhập:", rep);
-    console.log("Đáp án:", qs.answer[0].en);
-    setTimeout(() => {
-      this.input();
-    }, 200);
-  }
+function textToSpeak() {
+  const text = document.getElementById("question").innerText;
+  console.log(text);
+  const msg = new SpeechSynthesisUtterance(text);
+  msg.rate = 0.6;
+  window.speechSynthesis.speak(msg);
 }
 
-function input() {
-  const qs = getQuestion();
-  const rep = prompt(qs.content, "");
+function handleModal() {
+  // Get the modal
+  const modal = document.getElementById("myModal");
+  modal.style.display = "block";
+}
+
+function getAnswer() {
+  const number_rand = document.getElementById("number_rand").value;
+  const answer = qsRep[`question_${Number(number_rand) + 1}`];
+  console.log(answer);
+  return answer;
+}
+
+function runSpeak() {
+  const myText = document.getElementById("answer").innerText;
+  const msg = new SpeechSynthesisUtterance(myText);
+  window.speechSynthesis.speak(msg);
+}
+
+function restartQS() {
+  const qs_current = document.getElementById("question").innerText;
+  document.getElementById("question_old").innerText = qs_current;
+}
+
+function closeModal() {
+  const modal = document.getElementById("myModal");
+  modal.style.display = "none";
+}
+
+function checkReply() {
+  const rep = document.getElementById("input_rep").value.toLowerCase();
   if (rep) {
-    checkQuestion(qs, rep.toLowerCase());
+    const answer = getAnswer()[0].en.toLowerCase();
+
+    if (rep === answer) {
+      console.log("Kết thúc", "Success");
+      closeModal();
+    } else {
+      restartQS();
+      document.getElementById("reply").innerText = "Reply: " + rep;
+      document.getElementById("answer").innerText = "Answer: " + answer;
+      document.getElementById("id_footer").style.display = "block";
+
+      console.log("Bạn nhập:", rep);
+      console.log("Đáp án:", answer);
+      runSpeak();
+      initQuestion();
+    }
   } else {
-    setTimeout(() => {
-      this.input();
-    }, 200);
+    initQuestion();
   }
 }
 
-window.onload = (event) => {
+function eventClick() {
+  document
+    .getElementById("run_speek_qs")
+    .addEventListener("click", textToSpeak);
+  document.getElementById("run_speak").addEventListener("click", checkReply);
+}
+
+function initQuestion() {
+  qs = getQuestion();
+  document.getElementById("question").innerText = qs["content"];
+  document.getElementById("number_rand").value = qs["number_rand"];
+}
+
+function createElementPage() {
+  const html_page = `<h2>Extension</h2>
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content" style="margin:auto;">
+			<div class="modal-header">
+				<div style="display: flex;flex-direction: row;">
+					<h2 id="question" style="color:white;" class="id_h2"></h2>
+					<input id="number_rand" value="" type="hidden"></input>
+					<button id="run_speek_qs"
+						style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Speek)~</button>
+
+				</div>
+
+			</div>
+			<div class="modal-body">
+				<form action="#">
+					<div class="fomrgroup">
+						<input type="text" name="input_rep" id="input_rep" value="" style="width:100%;" class="input_form">
+					</div>
+
+					<div class="fomrgroup" style="margin-top:10px;">
+						<button id="run_speak" type="button" class="input_submit">Kiểm tra</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer" style="display:none" id="id_footer">
+				<div style="width:100%;display: flex;margin-top: 20px;">
+					<h4 id="question_old" style="text-align: left;color:rgba(255, 255, 255, 0.63)" class="id_h4"></h4>
+				</div>
+				<div style="width:100%;display: flex;">
+					<h6 id="reply" style="text-align: left;color:rgba(255, 255, 255, 0.46)" class="id_h6"></h6>
+
+				</div>
+				<div style="width:100%;display: flex;">
+					<h6 id="answer" style="text-align: left;color:rgba(255, 255, 255, 0.46);" class="id_h6"></h6>
+				</div>
+			</div>
+		</div>
+
+	</div>`;
+
+  const node = document.createElement("div");
+  // node.innerHTML += data;
+  node.innerHTML += html_page;
+  document.body.appendChild(node);
+}
+
+window.onload = () => {
   console.log("page is fully loaded");
-  input();
+  createElementPage();
+  handleModal();
+  eventClick();
+  initQuestion();
 };

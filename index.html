@@ -1,20 +1,64 @@
 <html>
-<head>
-<meta charset="utf-8" />
-<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
-<script src="./content.js"></script>
-<!-- <script src="./data.js"></script> -->
-</head>
-<body style="width: 400px">
-	<h1>Xin chào các bạn mình là Khương</h1>
-	<script>
-		
-		window.onload = (event) => {
-				console.log('page is fully loaded');
-				input()
-		};
-		
-	</script>
-</body>
-</html>
 
+<head>
+	<meta charset="utf-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js"></script>
+
+
+</head>
+
+<body>
+	<div>
+
+
+
+		<h2>Tool write by Khương</h2>
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<div style="display: flex;flex-direction: row;">
+						<h2 id="question" style="color:white;"></h2>
+						<input id="number_rand" value="" type="hidden"></input>
+						<button id="run_speek_qs"
+							style="background-color:white;border:none;opacity: 0.6;border-radius:90px;height:40px;margin-top: 15px;"><i
+								class="fas fa-volume-up"></i></button>
+
+					</div>
+
+				</div>
+				<div class="modal-body">
+					<form action="#">
+						<h2></h2>
+						<div class="fomrgroup">
+							<input type="text" name="input_rep" id="input_rep" value="" style="width:100%;">
+						</div>
+
+						<div class="fomrgroup" style="margin-top:10px;">
+							<button id="run_speak" type="button" class="btn btn-success">Kiểm tra</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<div style="width:100%;display: flex;">
+						<h4 id="question_old" style="text-align: left;color:rgba(255, 255, 255, 0.63)"></h4>
+					</div>
+					<div style="width:100%;display: flex;">
+						<h6 id="reply" style="text-align: left;color:rgba(255, 255, 255, 0.46)"></h6>
+
+					</div>
+					<div style="width:100%;display: flex;">
+						<h6 id="answer" style="text-align: left;color:rgba(255, 255, 255, 0.46);"></h6>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>
