@@ -221,13 +221,46 @@ const qsRep = {
   question_9: question_9,
 };
 
+let storeRandom = [];
+
+// --- version 1
 // B1. Lấy câu hỏi hiển thị. Nhập vào câu trả lời
 // B2. Lấy đáp án so sánh với đáp án câu hỏi nhập vào.
 // B3. Thực hiện prompt lại nếu nhập sai đáp án.
 // B4. Upload lên facebook.
 
+// --- version 2
+// B1. Tạo modal custom. OK
+// B2. Lấy giá trị form. OK
+// B3. Phát âm thanh.  OK
+// B4. In câu hỏi vào đầu header. OK.
+// B5. In câu trả lời vào footer. OK
+
+function randomQS() {
+  return Math.floor(Math.random() * list_question.length); //[0,8]
+}
+
+// B1. Kiểm tra trong store đã có số đó chưa.
+// B2. Nếu chưa có lưu lại rồi dừng vòng lặp và lấy đi xử lý.
+// B3. Nếu đã có thì random 1 con số khác-> nếu trùng thì thực hiện lại.
+// B4. Nếu nó đã đủ tất cả các số thì xóa tất cả các số lưu và thực hiện lại từ đầu
+
 function getQuestion() {
-  const randNumber = Math.floor(Math.random() * list_question.length); //[0,8]
+  let randNumber = randomQS();
+  for (let i = 0; i < list_question.length; i++) {
+    if (storeRandom.length === list_question.length) {
+      storeRandom = [];
+      break;
+    }
+    if (storeRandom.includes(randNumber)) {
+      randNumber = randomQS();
+    } else {
+      storeRandom.push(randNumber);
+      break;
+    }
+  }
+  console.log("%ccontent.js line:269 object", "color: #007acc;", storeRandom);
+
   const qs = list_question[randNumber];
 
   return { content: qs, number_rand: randNumber };

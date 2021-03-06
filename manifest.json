@@ -1,11 +1,11 @@
 {
-  "name": "English Extentison 1",
-  "version": "1.1",
+  "name": "English Extentison 2",
+  "version": "1.2",
   "description": "Đây là tiện ích mở rộng đầu tiên của tôi",
-  "permissions": ["tabs","activeTab", "storage","https://www.facebook.com/*"],
+  "permissions": ["tabs","activeTab", "storage","https://www.facebook.com/*","https://animehay.tv/*"],
   "content_scripts" : [
     {
-      "matches" : ["https://www.facebook.com/*"],
+      "matches" : ["https://www.facebook.com/*","https://animehay.tv/*"],
       "js" : ["content.js"],
       "css" :["content.css"]
     }
