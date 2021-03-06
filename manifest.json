@@ -2,10 +2,10 @@
   "name": "English Extentison 2",
   "version": "1.2",
   "description": "Đây là tiện ích mở rộng đầu tiên của tôi",
-  "permissions": ["tabs","activeTab", "storage","https://www.facebook.com/*","https://animehay.tv/*","https://www.youtube.com/*"],
+  "permissions": ["tabs","activeTab", "storage","https://www.facebook.com/*"],
   "content_scripts" : [
     {
-      "matches" : ["https://www.facebook.com/*","https://animehay.tv/*","https://www.youtube.com/*"],
+      "matches" : ["https://www.facebook.com/*","https://animehay.tv/*","https://vuighe.net/","https://www.youtube.com/"],
       "js" : ["content.js"],
       "css" :["content.css"]
     }

@@ -303,6 +303,19 @@ function closeModal() {
   modal.style.display = "none";
 }
 
+function checkCorrect(replyData, answerData) {
+  let str = "";
+
+  for (let i = 0; i < answerData.length; i++) {
+    if (replyData[i] == answerData[i]) {
+      str += replyData[i];
+    } else {
+      break;
+    }
+  }
+  document.getElementById("reply_correct").innerText = "Correct: " + str;
+}
+
 function checkReply() {
   const rep = document.getElementById("input_rep").value.toLowerCase();
   if (rep) {
@@ -314,6 +327,7 @@ function checkReply() {
     } else {
       restartQS();
       document.getElementById("reply").innerText = "Reply: " + rep;
+      checkCorrect(rep, answer);
       document.getElementById("answer").innerText = "Answer: " + answer;
       document.getElementById("id_footer").style.display = "block";
 
@@ -367,9 +381,9 @@ function createElementPage() {
 
 			</div>
 			<div class="modal-body">
-				<form action="#" id="myForm">
+				<form action="#" id="myForm"  autocomplete="off">
 					<div class="fomrgroup">
-						<input type="text" name="input_rep" id="input_rep" value="" style="width:100%;" class="input_form">
+						<input type="text" name="input_rep" id="input_rep" value="" style="width:100%;" class="input_form" autofocus>
 					</div>
 
 					<div class="fomrgroup" style="margin-top:10px;">
@@ -377,13 +391,15 @@ function createElementPage() {
 					</div>
 				</form>
 			</div>
-			<div class="modal-footer" style="display:none" id="id_footer">
+			<div class="modal-footer" style="display:none;background-color:#333;" id="id_footer">
 				<div style="width:100%;display: flex;margin-top: 20px;">
 					<h4 id="question_old" style="text-align: left;color:rgba(255, 255, 255, 0.63)" class="id_h4"></h4>
 				</div>
 				<div style="width:100%;display: flex;">
 					<h6 id="reply" style="text-align: left;color:rgba(255, 255, 255, 0.46)" class="id_h6"></h6>
-
+				</div>
+        <div style="width:100%;display: flex;">
+					<h6 id="reply_correct" style="text-align: left;color:#4bb543;" class="id_h5"></h6>
 				</div>
 				<div style="width:100%;display: flex;">
 					<h6 id="answer" style="text-align: left;color:rgba(255, 255, 255, 0.46);" class="id_h6"></h6>
