@@ -222,6 +222,7 @@ const qsRep = {
 };
 
 let storeRandom = [];
+let storeSpecified = [];
 
 // --- version 1
 // B1. Lấy câu hỏi hiển thị. Nhập vào câu trả lời
@@ -240,13 +241,42 @@ function randomQS() {
   return Math.floor(Math.random() * list_question.length); //[0,8]
 }
 
+function randomMinMax(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min; //[5,8]
+}
+
+function randomElementInArray(array) {
+  return array[Math.floor(Math.random() * (array.length - 1 + 1)) + 1];
+}
+
+function randomSpecified(arr) {
+  return Math.floor(Math.random() * arr.length); //[0,8]
+}
+
 // B1. Kiểm tra trong store đã có số đó chưa.
 // B2. Nếu chưa có lưu lại rồi dừng vòng lặp và lấy đi xử lý.
 // B3. Nếu đã có thì random 1 con số khác-> nếu trùng thì thực hiện lại.
 // B4. Nếu nó đã đủ tất cả các số thì xóa tất cả các số lưu và thực hiện lại từ đầu
 
-function getQuestion() {
-  let randNumber = randomQS();
+function getSpecified() {
+  let input_limit = document.getElementById("input_limit").value.trim();
+  if (input_limit.length > 0) {
+    if (id_limit.style.display === "block") {
+      let arr_num = input_limit
+        .split(",")
+        .map((item) => Number(item))
+        .sort((a, b) => a - b);
+      console.log("%ccontent.js line:269 object", "color: #007acc;", arr_num);
+      return arr_num;
+    } else {
+      return [];
+    }
+  } else {
+    return [];
+  }
+}
+
+function checkDuplicate(randNumber) {
   for (let i = 0; i < list_question.length; i++) {
     if (storeRandom.length === list_question.length) {
       storeRandom = [];
@@ -259,8 +289,41 @@ function getQuestion() {
       break;
     }
   }
-  console.log("%ccontent.js line:269 object", "color: #007acc;", storeRandom);
+  return randNumber;
+}
 
+function checkDuplicateSpecified(randNumber, onLyQS) {
+  for (let i = 0; i < onLyQS.length; i++) {
+    if (storeSpecified.length === onLyQS.length) {
+      storeSpecified = [];
+      break;
+    }
+    if (storeSpecified.includes(randNumber)) {
+      randNumber = randomSpecified(onLyQS);
+    } else {
+      storeSpecified.push(randNumber);
+      break;
+    }
+  }
+  console.log(
+    "%ccontent.js line:310 object",
+    "color: #007acc;",
+    storeSpecified
+  );
+  return randNumber;
+}
+
+function getQuestion() {
+  let randNumber = randomQS();
+  let onLyQS = getSpecified();
+
+  if (onLyQS.length > 0) {
+    // randNumber = randomElementInArray(onLyQS);
+    // randNumber = checkDuplicateSpecified(randNumber, onLyQS);
+    // console.log("%ccontent.js line:298 object", "color: #007acc;", randNumber);
+  } else {
+    randNumber = checkDuplicate(randNumber);
+  }
   const qs = list_question[randNumber];
 
   return { content: qs, number_rand: randNumber };
@@ -373,6 +436,16 @@ function handleForm(event) {
   checkReply();
 }
 
+function toggleLimit() {
+  let id_limit = document.getElementById("id_limit");
+  console.log(id_limit.style.display);
+  if (id_limit.style.display === "none") {
+    id_limit.style.display = "block";
+  } else {
+    id_limit.style.display = "none";
+  }
+}
+
 function eventClick() {
   var form = document.getElementById("myForm");
   form.addEventListener("submit", handleForm);
@@ -385,6 +458,8 @@ function eventClick() {
 
   const run_speak = document.getElementById("run_speak");
   run_speak.addEventListener("click", checkReply);
+
+  document.getElementById("id_settings").addEventListener("click", toggleLimit);
 }
 
 function initQuestion() {
@@ -401,12 +476,21 @@ function createElementPage() {
 		<!-- Modal content -->
 		<div class="modal-content" style="margin:auto;">
 			<div class="modal-header">
-				<div style="display: flex;flex-direction: row;">
-					<h2 id="question" style="color:white;" class="id_h2"></h2>
-					<input id="number_rand" value="" type="hidden"></input>
-					<button id="run_speak_qs"
-						style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Speak)~</button>
+				<div style="display: flex;justify-content:space-between;">
+          <div style="display: flex;flex-direction: row;justify-content:space-between;">
+          	  <h2 id="question" style="color:white;" class="id_h2"></h2>
+              <input id="number_rand" value="" type="hidden"></input>
 
+              <button id="run_speak_qs"
+                style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Speak)~</button>
+          </div>
+				
+
+          <button style="display:none;background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;" id="id_settings">~(Settings)~</button>
+
+				</div>
+        <div class="fomrgroup" style="display: none;flex-direction: row;justify-content: flex-end;" id="id_limit">
+						<input type="text" name="input_rep" id="input_limit" value="" style="width:100px;" class="input_form" >
 				</div>
 
 			</div>
