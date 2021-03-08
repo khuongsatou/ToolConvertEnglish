@@ -2,62 +2,122 @@
 
 <head>
 	<meta charset="utf-8" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js"></script>
-
+	<link rel="stylesheet" href="./content.css">
+	<script src="./content.js"></script>
 
 </head>
 
 <body>
-	<div>
 
 
+	<h1>Tool write by Khương</h1>
+	<h2>Extension</h2>
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
 
-		<h2>Tool write by Khương</h2>
-		<!-- The Modal -->
-		<div id="myModal" class="modal">
-
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-header">
-					<div style="display: flex;flex-direction: row;">
-						<h2 id="question" style="color:white;"></h2>
+		<!-- Modal content -->
+		<div class="modal-content" style="margin:auto;">
+			<div class="modal-header">
+				<div style="display: flex;justify-content:space-between;">
+					<div style="display: flex;flex-direction: row;justify-content:space-between;">
+						<h2 id="question" style="color:white;" class="id_h2"></h2>
 						<input id="number_rand" value="" type="hidden"></input>
-						<button id="run_speek_qs"
-							style="background-color:white;border:none;opacity: 0.6;border-radius:90px;height:40px;margin-top: 15px;"><i
-								class="fas fa-volume-up"></i></button>
+						<input id="id_qs" value="1" type="hidden"></input>
 
+						<button id="run_speak_qs"
+							style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Speak)~</button>
 					</div>
+
+
+					<button
+						style="display:none;background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;"
+						id="id_settings">~(Settings)~</button>
 
 				</div>
-				<div class="modal-body">
-					<form action="#">
-						<h2></h2>
-						<div class="fomrgroup">
-							<input type="text" name="input_rep" id="input_rep" value="" style="width:100%;">
-						</div>
-
-						<div class="fomrgroup" style="margin-top:10px;">
-							<button id="run_speak" type="button" class="btn btn-success">Kiểm tra</button>
-						</div>
-					</form>
+				<div class="fomrgroup" style="display: none;flex-direction: row;justify-content: flex-end;"
+					id="id_limit">
+					<input type="text" name="input_rep" id="input_limit" value="" style="width:100px;"
+						class="input_form">
 				</div>
-				<div class="modal-footer">
-					<div style="width:100%;display: flex;">
-						<h4 id="question_old" style="text-align: left;color:rgba(255, 255, 255, 0.63)"></h4>
-					</div>
-					<div style="width:100%;display: flex;">
-						<h6 id="reply" style="text-align: left;color:rgba(255, 255, 255, 0.46)"></h6>
 
-					</div>
-					<div style="width:100%;display: flex;">
-						<h6 id="answer" style="text-align: left;color:rgba(255, 255, 255, 0.46);"></h6>
-					</div>
-				</div>
 			</div>
+			<div class="modal-body">
+				<table style="width:100%" id="id_table_sample">
 
+				</table>
+				<form action="#" id="myForm" autocomplete="off">
+					<div class="fomrgroup">
+						<input type="text" name="input_rep" id="input_rep" value="" style="width:100%;"
+							class="input_form" autofocus>
+					</div>
+
+					<div class="fomrgroup" style="margin-top:10px;">
+						<button id="run_speak" type="button" class="input_submit">Kiểm tra</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer" style="display:none;background-color:#333;" id="id_footer">
+				<table style="width:100%">
+					<tr>
+						<th>
+							<div style="width:100%;display: flex;margin-top: 20px;">
+								<h4 id="question_old" style="text-align: left;color:rgba(255, 255, 255, 0.63)"
+									class="id_h4">
+								</h4>
+							</div>
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<div style="width:100%;display: flex;margin-top: 20px;">
+								<h4 id="id_qs_old" style="text-align: left;color:rgba(255, 255, 255, 0.63)"
+									class="id_h4">
+								</h4>
+							</div>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<div style="width:100%;display: flex;">
+								<h6 id="reply" style="text-align: left;color:rgba(255, 255, 255, 0.46)" class="id_h6">
+								</h6>
+							</div>
+						</td>
+
+					</tr>
+					<tr>
+						<td>
+							<div style="width:100%;display: flex;">
+								<h6 id="reply_correct" style="text-align: left;color:#4bb543;" class="id_h5"></h6>
+							</div>
+						</td>
+
+					</tr>
+
+					<tr>
+						<td>
+							<div style="width:100%;display: flex;">
+								<h6 id="answer" style="text-align: left;color:rgba(255, 255, 255, 0.46);" class="id_h6">
+								</h6>
+								<button id="run_speak_answer"
+									style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;"><span
+										style="color:#333;">~(Speak)~</span></button>
+							</div>
+						</td>
+
+					</tr>
+
+				</table>
+
+
+
+
+
+			</div>
 		</div>
+
+
+
 	</div>
 </body>
 
