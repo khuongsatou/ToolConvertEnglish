@@ -10,6 +10,18 @@ const list_question = [
   "9. Do you have any questions for me, about the company or the position?",
 ];
 
+const list_question_vi = [
+  "1. Kể cho tôi một ít về bạn?",
+  "2. Bạn có thể cho tôi biết bạn nghe nói về vị trí này như thế nào không?",
+  "3. Điều gì đã thu hút bạn đến với công ty của chúng tôi?",
+  "4. Điểm mạnh nhất của bạn là gì?",
+  "5. Điểm yếu lớn nhất của bạn là gì?",
+  "6. Hãy kể cho tôi nghe về khoảng thời gian bạn gặp phải tình huống căng thẳng?",
+  "7. Bạn thấy mình ở đâu trong 5 năm nữa?",
+  "8. Mức lương kỳ vọng của bạn là bao nhiêu?",
+  "9. Bạn có câu hỏi nào cho tôi, về công ty hay vị trí không?",
+];
+
 const question_1 = [
   {
     id: 1,
@@ -362,9 +374,45 @@ function textToSpeak(text) {
   window.speechSynthesis.speak(msg);
 }
 
+function textToSpeakVi(text) {
+  const msg = new SpeechSynthesisUtterance(
+    "Hệ thống đã khởi động, chào mừng Khương quay trở lại. Hệ thống đã khởi động, chào mừng Hiệp quay trở lại"
+  );
+  msg.rate = 1;
+  msg.pitch = 0.5;
+  msg.lang = "vi-VN";
+  window.speechSynthesis.speak(msg);
+}
+
 function speakQS() {
   const text = document.getElementById("question").innerText;
   textToSpeak(text);
+}
+
+function playTTS(text, lang) {
+  // Get the audio element
+  const audioEl = document.getElementById("tts-audio-speak");
+
+  const url = encodeURI(
+    `https://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&client=tw-ob&q=${text}`
+  );
+
+  // add the sound to the audio element
+  audioEl.src = url;
+
+  //For auto playing the sound
+  audioEl.play();
+}
+
+function speakQSVi() {
+  const randNumber = document.getElementById("number_rand").value;
+  const qs_vi = list_question_vi[randNumber]
+    .toString()
+    .toLocaleLowerCase()
+    .replace(".", "")
+    .replace("?", "");
+  console.log(qs_vi);
+  playTTS(`${qs_vi}`, "vi");
 }
 
 function speakAnswer() {
@@ -503,6 +551,9 @@ function eventClick() {
 
   // Chuyển câu hỏi thành giọng nói
   document.getElementById("run_speak_qs").addEventListener("click", speakQS);
+  document
+    .getElementById("run_speak_qs_vi")
+    .addEventListener("click", speakQSVi);
 
   // Chuyển câu trả lời thành giọng nói
   document
@@ -568,6 +619,9 @@ function createElementPage() {
 
 						<button id="run_speak_qs"
 							style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Speak)~</button>
+            <button id="run_speak_qs_vi"
+							style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Đọc)~</button>
+            <audio controls id="tts-audio-speak" style="visibility: hidden;"></audio>
 					</div>
 
 

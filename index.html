@@ -8,11 +8,11 @@
 </head>
 
 <body>
-
-
 	<h1>Tool write by Khương</h1>
 	<h2>Extension</h2>
+
 	<!-- The Modal -->
+
 	<div id="myModal" class="modal">
 
 		<!-- Modal content -->
@@ -26,6 +26,9 @@
 
 						<button id="run_speak_qs"
 							style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Speak)~</button>
+						<button id="run_speak_qs_vi"
+							style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Đọc)~</button>
+						<audio controls id="tts-audio-speak"></audio>
 					</div>
 
 
@@ -49,6 +52,7 @@
 					<div class="fomrgroup">
 						<input type="text" name="input_rep" id="input_rep" value="" style="width:100%;"
 							class="input_form" autofocus>
+						<input type="hidden" id="input_rep_first" value="1" style="width:100%;">
 					</div>
 
 					<div class="fomrgroup" style="margin-top:10px;">
