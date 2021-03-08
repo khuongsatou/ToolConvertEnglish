@@ -519,26 +519,28 @@ function eventClick() {
   document.getElementById("id_settings").addEventListener("click", toggleLimit);
 }
 
+const createElementSample = (id) => {
+  const answer = getAnswer();
+  let row = "<tr>";
+  answer.map((col) => {
+    row += `<th><button id="sample_${
+      col.id
+    }" type="button" class="btn_sample" style="background-color:${
+      col.id.toString().includes(id) ? "red" : "#007bff"
+    }" >${col.id}</button></th>`;
+  });
+  row += "</tr>";
+
+  document.getElementById("id_table_sample").innerHTML = row;
+};
+
 // Khởi tạo câu hỏi đầu tiên.
 function initQuestion() {
   // Lấy câu hỏi random.
   const qs = getQuestion();
   document.getElementById("question").innerText = qs["content"];
   document.getElementById("number_rand").value = qs["number_rand"];
-
-  const table = document.getElementById("id_table_sample");
-
-  const answer = getAnswer();
-  let row = "<tr>";
-  answer.map((col, index) => {
-    row += `<th><button id="sample_${
-      index + 1
-    }" type="button" class="btn_sample"  >${index + 1}</button></th>`;
-  });
-  row += "</tr>";
-
-  table.innerHTML = row;
-
+  createElementSample(1);
   initMutipleClick();
 }
 
@@ -552,6 +554,7 @@ function createElementPage() {
 	<h2>Extension</h2>
 
 	<!-- The Modal -->
+ 
 	<div id="myModal" class="modal">
 
 		<!-- Modal content -->
@@ -588,6 +591,8 @@ function createElementPage() {
 					<div class="fomrgroup">
 						<input type="text" name="input_rep" id="input_rep" value="" style="width:100%;"
 							class="input_form" autofocus>
+            <input type="hidden"  id="input_rep_first" value="1" style="width:100%;"
+						 >
 					</div>
 
 					<div class="fomrgroup" style="margin-top:10px;">
@@ -657,7 +662,9 @@ function createElementPage() {
 
 
 
-	</div>`;
+	</div>
+  
+  `;
 
   const node = document.createElement("div");
   node.innerHTML += html_page;
@@ -665,22 +672,35 @@ function createElementPage() {
   document.body.appendChild(node);
 }
 
-// let idChecked = [];
-// idChecked = [item.innerText];
-
 function initMutipleClick() {
   // -----. Handle Click Multiple Choice.
   document.querySelectorAll(".btn_sample").forEach((item) => {
     item.addEventListener("click", (event) => {
       //handle click
-      onSample(item.innerText);
-      if (item.style.backgroundColor === "red") {
-        item.style.backgroundColor = "#007bff";
-      } else {
-        item.style.backgroundColor = "red";
+      const id = item.innerText.toString();
+      onSample(id);
+      const answer = getAnswer().length;
+      for (let col = 1; col <= answer; col++) {
+        document.getElementById("sample_" + col).style.backgroundColor =
+          col != id ? "#007bff" : "red";
       }
     });
   });
+}
+
+function focusQuestion() {
+  let first = document.getElementById("input_rep_first").value.toString();
+  if (first === "1") {
+    document.getElementById("input_rep_first").value = "0";
+  } else {
+    if (document.getElementById("input_rep").value.trim().length === 0) {
+      speakQS();
+    }
+  }
+}
+
+function focusInputReply() {
+  document.getElementById("input_rep").addEventListener("focus", focusQuestion);
 }
 
 window.onload = () => {
@@ -689,4 +709,5 @@ window.onload = () => {
   handleModal();
   eventClick();
   initQuestion();
+  focusInputReply();
 };
