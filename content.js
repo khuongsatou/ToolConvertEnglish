@@ -251,6 +251,18 @@ const question_9 = [
 
 const qsNum = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+const storeSample = {
+  question_1: ["1"],
+  question_2: ["1"],
+  question_3: ["1"],
+  question_4: ["1"],
+  question_5: ["1"],
+  question_6: ["1"],
+  question_7: ["1"],
+  question_8: ["1"],
+  question_9: ["1"],
+};
+
 const qsRep = {
   question_1: question_1,
   question_2: question_2,
@@ -392,11 +404,12 @@ function speakQS() {
 function playTTS(text, lang) {
   // Get the audio element
   const audioEl = document.getElementById("tts-audio-speak");
-
-  const url = encodeURI(
-    `https://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&client=tw-ob&q=${text}`
-  );
-
+  const encode = encodeURIComponent(text);
+  const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&client=tw-ob&q=${encode}`;
+  // const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&client=tw-ob&q=${encodeURIComponent(
+  //   text
+  // )}`;
+  // encodeURI
   // add the sound to the audio element
   audioEl.src = url;
 
@@ -410,6 +423,7 @@ function speakQSVi() {
     .toString()
     .toLocaleLowerCase()
     .replace(".", "")
+    .replace(",", "")
     .replace("?", "");
   console.log(qs_vi);
   playTTS(`${qs_vi}`, "vi");
@@ -496,6 +510,7 @@ function checkReply() {
       closeModal();
     } else {
       // Đổi câu hỏi khác
+      activeSampleSave();
       restartQS();
 
       // Thực hiện tính % câu trả lời
@@ -521,14 +536,33 @@ function checkReply() {
 
       // Reset câu trả lời
       document.getElementById("input_rep").value = "";
+      // document.getElementById("id_qs").value = "1";
 
       runSpeak();
       initQuestion();
+      getActiveSampleSave();
     }
   } else {
     initQuestion();
   }
 }
+
+const getActiveSampleSave = () => {
+  const number_rand = document.getElementById("number_rand").value;
+  const arrIDActive = storeSample[`question_${Number(number_rand) + 1}`];
+  console.log(
+    "%ccontent.js line:557 object",
+    "color: #007acc;",
+    arrIDActive,
+    Number(number_rand) + 1
+  );
+  document.getElementById(`sample_${arrIDActive[0]}`).style.backgroundColor =
+    "red";
+  document.getElementById("id_qs").value = arrIDActive[0];
+  if (arrIDActive[0] !== "1") {
+    document.getElementById("sample_" + 1).style.backgroundColor = "#007bff";
+  }
+};
 
 function handleForm(event) {
   event.preventDefault();
@@ -585,12 +619,25 @@ const createElementSample = (id) => {
   document.getElementById("id_table_sample").innerHTML = row;
 };
 
+const activeSampleSave = () => {
+  const id_qs = document.getElementById("id_qs").value;
+  const number_rand = document.getElementById("number_rand").value;
+  const arrIDActive = storeSample[`question_${Number(number_rand) + 1}`];
+  if (arrIDActive.includes(id_qs)) {
+    document.getElementById(`sample_${id_qs}`).style.backgroundColor = "red";
+  } else {
+    storeSample[`question_${Number(number_rand) + 1}`] = [id_qs.toString()];
+  }
+  console.log("%ccontent.js line:627 object", "color: #007acc;", storeSample);
+};
+
 // Khởi tạo câu hỏi đầu tiên.
 function initQuestion() {
   // Lấy câu hỏi random.
   const qs = getQuestion();
   document.getElementById("question").innerText = qs["content"];
   document.getElementById("number_rand").value = qs["number_rand"];
+  // Reset về 1.
   createElementSample(1);
   initMutipleClick();
 }
@@ -723,7 +770,7 @@ function createElementPage() {
   const node = document.createElement("div");
   node.innerHTML += html_page;
   // Auto in và page facebook không cần chạy extension
-  document.body.appendChild(node);
+  // document.body.appendChild(node);
 }
 
 function initMutipleClick() {
