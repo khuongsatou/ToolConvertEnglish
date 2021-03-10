@@ -498,6 +498,42 @@ function findAnswerByID() {
   return found_sample;
 }
 
+function contineQS(rep, answer) {
+  // Đổi câu hỏi khác
+  activeSampleSave();
+  restartQS();
+
+  // Thực hiện tính % câu trả lời
+  const correct = checkCorrect(rep, answer);
+  const percentCorrect = handlePercent(correct, answer);
+
+  // Hiển thị lên giao diện câu trả lời
+  document.getElementById("reply").innerText = "Reply: " + rep;
+
+  // Tính độ chính xác
+  document.getElementById("reply_correct").innerText =
+    "Correct: " +
+    correct +
+    " --> " +
+    Number.parseFloat(percentCorrect).toFixed(2) +
+    "%";
+
+  // Show đáp án
+  document.getElementById("answer").innerText = "Answer: " + answer;
+
+  // Show vùng chứa trả lời và dáp án
+  document.getElementById("id_footer").style.display = "block";
+
+  // Reset câu trả lời
+  document.getElementById("input_rep").value = "";
+  // document.getElementById("id_qs").value = "1";
+
+  runSpeak();
+  initQuestion();
+  getActiveSampleSave();
+}
+
+// B2 [` Kiểm tra `]
 function checkReply() {
   const rep = document.getElementById("input_rep").value.toLowerCase();
   // Kiểm tra xem có nhập không nếu không thì đổi câu hỏi khác
@@ -507,40 +543,19 @@ function checkReply() {
     // So sánh câu trả lời và đáp án
     if (rep === answer) {
       console.log("Kết thúc", "Success");
-      closeModal();
+
+      let txt;
+      let r = confirm("Ok để tiếp tục learning ENGLISH!");
+      if (r == true) {
+        contineQS(rep, answer);
+        txt = "You pressed OK!";
+      } else {
+        txt = "You pressed Cancel!";
+        closeModal();
+      }
+      console.log("%ccontent.js line:552 object", "color: #007acc;", txt);
     } else {
-      // Đổi câu hỏi khác
-      activeSampleSave();
-      restartQS();
-
-      // Thực hiện tính % câu trả lời
-      const correct = checkCorrect(rep, answer);
-      const percentCorrect = handlePercent(correct, answer);
-
-      // Hiển thị lên giao diện câu trả lời
-      document.getElementById("reply").innerText = "Reply: " + rep;
-
-      // Tính độ chính xác
-      document.getElementById("reply_correct").innerText =
-        "Correct: " +
-        correct +
-        " --> " +
-        Number.parseFloat(percentCorrect).toFixed(2) +
-        "%";
-
-      // Show đáp án
-      document.getElementById("answer").innerText = "Answer: " + answer;
-
-      // Show vùng chứa trả lời và dáp án
-      document.getElementById("id_footer").style.display = "block";
-
-      // Reset câu trả lời
-      document.getElementById("input_rep").value = "";
-      // document.getElementById("id_qs").value = "1";
-
-      runSpeak();
-      initQuestion();
-      getActiveSampleSave();
+      contineQS(rep, answer);
     }
   } else {
     initQuestion();
@@ -770,7 +785,7 @@ function createElementPage() {
   const node = document.createElement("div");
   node.innerHTML += html_page;
   // Auto in và page facebook không cần chạy extension
-  // document.body.appendChild(node);
+  document.body.appendChild(node);
 }
 
 function initMutipleClick() {
