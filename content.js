@@ -1,3 +1,86 @@
+const list_link_note = [
+  {
+    id: 6,
+    title: "Django CMS",
+    link:
+      "https://django-cms.readthedocs.io/en/latest/introduction/02-templates_placeholders.html#templates",
+  },
+  {
+    id: 5,
+    title: "Source Django My Shop",
+    link: "file:///Users/apple/Desktop/python_project/my-shop/",
+  },
+  {
+    id: 4,
+    title: "Ecommerce Django",
+    link: "https://github.com/divanov11/django_ecommerce_mod5/",
+  },
+  {
+    id: 3,
+    title: "Demo ecommerce",
+    link:
+      "https://codewithsteps.herokuapp.com/part/47920dbd-be36-45ea-afae-a81851ccaeaf/",
+  },
+  {
+    id: 2,
+    title: "Awesome Django REST Framework",
+    link: "https://github.com/nioperas06/awesome-django-rest-framework",
+  },
+  {
+    id: 1,
+    title: "Blog API Django REST Framework",
+    link:
+      "https://github.com/codingforentrepreneurs/Blog-API-with-Django-Rest-Framework",
+  },
+];
+
+const list_todo_note = [
+  {
+    id: 2,
+    title: "Dự án django",
+    data: [
+      {
+        id: 1,
+        title: "Phân tích  web demo",
+      },
+      {
+        id: 2,
+        title: "Chuẩn bị source.",
+      },
+      {
+        id: 3,
+        title: "Chuẩn bị swappger",
+      },
+      {
+        id: 4,
+        title: "Tìm thư viện tương ứng với phân tích.",
+      },
+    ],
+  },
+  {
+    id: 1,
+    title: "Fix bug Kidbox",
+    data: [
+      {
+        id: 1,
+        title: "Tích hợp thông báo cho ios.",
+      },
+      {
+        id: 2,
+        title: "Fix lỗi khi đăng 1 bài viết mới thì không comment được.",
+      },
+      {
+        id: 3,
+        title: "Điều chỉnh kích thước location.",
+      },
+      {
+        id: 4,
+        title: "Cho text comment / reply/ post 14",
+      },
+    ],
+  },
+];
+
 const list_question = [
   "1. Tell me a little bit about yourself?",
   "2. Can you tell me how you heard about this position?",
@@ -263,7 +346,24 @@ const storeSample = {
   question_9: ["1"],
 };
 
-const qsRep = {
+// const qsRep = {
+//   question_1: question_1,
+//   question_2: question_2,
+//   question_3: question_3,
+//   question_4: question_4,
+//   question_5: question_5,
+//   question_6: question_6,
+//   question_7: question_7,
+//   question_8: question_8,
+//   question_9: question_9,
+// };
+
+const getOptionQS = (array) => {
+  array.shift();
+  return array.map((item, key) => (item = { ...item, id: key + 1 }));
+};
+
+let qsRepOption = {
   question_1: question_1,
   question_2: question_2,
   question_3: question_3,
@@ -274,6 +374,13 @@ const qsRep = {
   question_8: question_8,
   question_9: question_9,
 };
+
+const qsRep = {};
+
+Object.keys(qsRepOption).map((qs) => {
+  qsRep[qs] = getOptionQS(qsRepOption[qs]);
+  return qsRep;
+});
 
 let storeRandom = [];
 let storeSpecified = [];
@@ -381,9 +488,13 @@ function getQuestion() {
 }
 
 function textToSpeak(text) {
-  const msg = new SpeechSynthesisUtterance(text);
-  msg.rate = 0.6;
-  window.speechSynthesis.speak(msg);
+  try {
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.rate = 0.6;
+    window.speechSynthesis.speak(msg);
+  } catch (error) {
+    console.log("%ccontent.js line:413 object", "color: #007acc;", error);
+  }
 }
 
 function textToSpeakVi(text) {
@@ -397,8 +508,12 @@ function textToSpeakVi(text) {
 }
 
 function speakQS() {
-  const text = document.getElementById("question").innerText;
-  textToSpeak(text);
+  try {
+    const text = document.getElementById("question").innerText;
+    textToSpeak(text);
+  } catch (error) {
+    console.log("%ccontent.js line:428 object", "color: #007acc;", error);
+  }
 }
 
 function playTTS(text, lang) {
@@ -531,6 +646,49 @@ function contineQS(rep, answer) {
   runSpeak();
   initQuestion();
   getActiveSampleSave();
+  // setSampleDefault();
+}
+
+function remove(array, element) {
+  return array.filter((el) => el !== element);
+}
+
+function setSampleDefault() {
+  const input_default = document.getElementById("input_default").value;
+  // const number_rand = document.getElementById("number_rand").value;
+  // const count = Object.keys(qsRep).map((row) => {
+  //   return qsRep[row].length;
+  // });
+
+  // const qsLimit = count.filter(function (x) {
+  //   return x == input_default;
+  // }).length;
+  // console.log("%ccontent.js line:551 object", "color: #007acc;", count);
+  // console.log("%ccontent.js line:552 object", "color: #007acc;", qsLimit);
+
+  // for (let index = 0; index < 2; index++) {
+  //   if (count.includes(Number(input_default))) {
+
+  //   }
+  // }
+
+  // console.log("%ccontent.js line:543 object", "color: #007acc;", count);
+  for (let index = 0; index < qsNum.length; index++) {
+    createElementSample(1);
+    const answer = getAnswer();
+    console.log("%ccontent.js line:548 object", "color: #007acc;", answer);
+    if (Number(input_default) <= answer.length) {
+      document.getElementById(
+        `sample_${input_default.toString()}`
+      ).style.backgroundColor = "red";
+      document.getElementById("sample_" + 1).style.backgroundColor = "#007bff";
+      document.getElementById("id_qs").value = input_default;
+      break;
+    } else {
+      const qs = getQuestion();
+      setQS(qs);
+    }
+  }
 }
 
 // B2 [` Kiểm tra `]
@@ -538,24 +696,29 @@ function checkReply() {
   const rep = document.getElementById("input_rep").value.toLowerCase();
   // Kiểm tra xem có nhập không nếu không thì đổi câu hỏi khác
   if (rep) {
-    const answer = findAnswerByID().en.toLowerCase();
+    const find = findAnswerByID();
+    if (find) {
+      const answer = findAnswerByID().en.toLowerCase();
 
-    // So sánh câu trả lời và đáp án
-    if (rep === answer) {
-      console.log("Kết thúc", "Success");
+      // So sánh câu trả lời và đáp án
+      if (rep === answer) {
+        console.log("Kết thúc", "Success");
 
-      let txt;
-      let r = confirm("Ok để tiếp tục learning ENGLISH!");
-      if (r == true) {
-        contineQS(rep, answer);
-        txt = "You pressed OK!";
+        let txt;
+        let r = confirm("Ok để tiếp tục learning ENGLISH!");
+        if (r == true) {
+          contineQS(rep, answer);
+          txt = "You pressed OK!";
+        } else {
+          txt = "You pressed Cancel!";
+          closeModal();
+        }
+        console.log("%ccontent.js line:552 object", "color: #007acc;", txt);
       } else {
-        txt = "You pressed Cancel!";
-        closeModal();
+        contineQS(rep, answer);
       }
-      console.log("%ccontent.js line:552 object", "color: #007acc;", txt);
     } else {
-      contineQS(rep, answer);
+      initQuestion();
     }
   } else {
     initQuestion();
@@ -565,12 +728,7 @@ function checkReply() {
 const getActiveSampleSave = () => {
   const number_rand = document.getElementById("number_rand").value;
   const arrIDActive = storeSample[`question_${Number(number_rand) + 1}`];
-  console.log(
-    "%ccontent.js line:557 object",
-    "color: #007acc;",
-    arrIDActive,
-    Number(number_rand) + 1
-  );
+
   document.getElementById(`sample_${arrIDActive[0]}`).style.backgroundColor =
     "red";
   document.getElementById("id_qs").value = arrIDActive[0];
@@ -593,6 +751,15 @@ function toggleLimit() {
   }
 }
 
+function webNote() {
+  let id_note = document.getElementById("id_footer_frame");
+  if (id_note.style.display === "none") {
+    id_note.style.display = "block";
+  } else {
+    id_note.style.display = "none";
+  }
+}
+
 // Xử lý tương tác với component
 function eventClick() {
   // Lấy form submit
@@ -600,9 +767,10 @@ function eventClick() {
 
   // Chuyển câu hỏi thành giọng nói
   document.getElementById("run_speak_qs").addEventListener("click", speakQS);
-  document
-    .getElementById("run_speak_qs_vi")
-    .addEventListener("click", speakQSVi);
+  document.getElementById("web_note").addEventListener("click", webNote);
+  // document
+  //   .getElementById("run_speak_qs_vi")
+  //   .addEventListener("click", speakQSVi);
 
   // Chuyển câu trả lời thành giọng nói
   document
@@ -646,12 +814,16 @@ const activeSampleSave = () => {
   console.log("%ccontent.js line:627 object", "color: #007acc;", storeSample);
 };
 
+function setQS(qs) {
+  document.getElementById("question").innerText = qs["content"];
+  document.getElementById("number_rand").value = qs["number_rand"];
+}
+
 // Khởi tạo câu hỏi đầu tiên.
 function initQuestion() {
   // Lấy câu hỏi random.
   const qs = getQuestion();
-  document.getElementById("question").innerText = qs["content"];
-  document.getElementById("number_rand").value = qs["number_rand"];
+  setQS(qs);
   // Reset về 1.
   createElementSample(1);
   initMutipleClick();
@@ -661,37 +833,105 @@ function onSample(id) {
   document.getElementById("id_qs").value = id;
 }
 
+function saveLink() {
+  let strHref = "";
+  list_link_note.map((item) => {
+    strHref += `<p>${item.id}. `;
+    strHref += `<a style="color:#fff;font-size:10;" href="${item.link}">${item.title}</a> </p>`;
+  });
+
+  return strHref;
+}
+
+function saveTodo() {
+  let strHref = "";
+  list_todo_note.map((row) => {
+    strHref += `<h6>${row.id}. ${row.title}</h6>`;
+    row.data.map((col) => {
+      strHref += `<p style="color:#fff;font-size:10;">B${col.id}. `;
+      strHref += `${col.title} </p>`;
+    });
+  });
+
+  strHref += "\n<---------------->\n";
+
+  return strHref;
+}
+
+function runJquery() {
+  return `function myFunction() {
+  alert("Hello! I am an alert box!");
+    }`;
+}
+
 // Tạo trang bằng javascript
 function createElementPage() {
   const html_page = `<h1>Tool write by Khương</h1>
 	<h2>Extension</h2>
+  
 
 	<!-- The Modal -->
- 
-	<div id="myModal" class="modal">
 
+	<div id="myModal" class="modal">
+  
 		<!-- Modal content -->
 		<div class="modal-content" style="margin:auto;">
 			<div class="modal-header">
-				<div style="display: flex;justify-content:space-between;">
-					<div style="display: flex;flex-direction: row;justify-content:space-between;">
-						<h2 id="question" style="color:white;" class="id_h2"></h2>
-						<input id="number_rand" value="" type="hidden"></input>
-						<input id="id_qs" value="1" type="hidden"></input>
 
-						<button id="run_speak_qs"
-							style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Speak)~</button>
-            <button id="run_speak_qs_vi"
-							style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;">~(Đọc)~</button>
-            <audio controls id="tts-audio-speak" style="visibility: hidden;"></audio>
-					</div>
+      <a href="./data.json">nhấp vô</a>
+    
+      
+
+      
+  
+        
+        
+				<table style="width:100%">
+					<tr>
+						<td colspan="3">
+							<h2 id="question" style="color:white;" class="id_h2"></h2>
+
+							<input id="number_rand" value="" type="hidden"></input>
+							<input id="id_qs" value="1" type="hidden"></input>
+
+						</td>
+						<td>
+							<div class="fomrgroup" style="flex-direction: row;justify-content: flex-end;" id="id_limit">
+								<button id="run_speak_qs"
+									style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;height:40px;margin-top: 40px;">~(Speak)~</button>
+							</div>
+							<button id="run_speak_qs_vi"
+								style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;display:none;">~(Đọc)~</button>
+							<audio controls id="tts-audio-speak" style="visibility: hidden;"></audio>
+						</td>
+						<!-- <td>
+							<div class="fomrgroup" style="flex-direction: row;background-color:red" id="id_limit">
+								<input type="number" name="input_default" id="input_default" value="2"
+									style="width:100px;float: right;" class="input_form" min="1">
+							</div>
+
+						</td> -->
+            <td>
+							<div class="fomrgroup" style="flex-direction: row;justify-content: flex-end;" id="id_limit">
+								<button id="web_note"
+									style="background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;height:40px;margin-top: 40px;">~(Note)~</button>
+							</div>
+						
+						</td>
+					</tr>
 
 
-					<button
-						style="display:none;background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;"
-						id="id_settings">~(Settings)~</button>
+				</table>
 
-				</div>
+
+
+
+
+				<button
+					style="display:none;background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;"
+					id="id_settings">~(Settings)~</button>
+
+
 				<div class="fomrgroup" style="display: none;flex-direction: row;justify-content: flex-end;"
 					id="id_limit">
 					<input type="text" name="input_rep" id="input_limit" value="" style="width:100px;"
@@ -699,7 +939,7 @@ function createElementPage() {
 				</div>
 
 			</div>
-			<div class="modal-body">
+			<div class="modal-body" style="clear:bold;">
 				<table style="width:100%" id="id_table_sample">
 
 				</table>
@@ -707,8 +947,7 @@ function createElementPage() {
 					<div class="fomrgroup">
 						<input type="text" name="input_rep" id="input_rep" value="" style="width:100%;"
 							class="input_form" autofocus>
-            <input type="hidden"  id="input_rep_first" value="1" style="width:100%;"
-						 >
+						<input type="hidden" id="input_rep_first" value="1" style="width:100%;">
 					</div>
 
 					<div class="fomrgroup" style="margin-top:10px;">
@@ -720,7 +959,7 @@ function createElementPage() {
 				<table style="width:100%">
 					<tr>
 						<th>
-							<div style="width:100%;display: flex;margin-top: 20px;">
+							<div style="width:100%;display: flex;">
 								<h4 id="question_old" style="text-align: left;color:rgba(255, 255, 255, 0.63)"
 									class="id_h4">
 								</h4>
@@ -729,7 +968,7 @@ function createElementPage() {
 					</tr>
 					<tr>
 						<th>
-							<div style="width:100%;display: flex;margin-top: 20px;">
+							<div style="width:100%;display: flex;">
 								<h4 id="id_qs_old" style="text-align: left;color:rgba(255, 255, 255, 0.63)"
 									class="id_h4">
 								</h4>
@@ -774,12 +1013,40 @@ function createElementPage() {
 
 
 			</div>
+
+
+       <div class="modal-footer">
+       				<table style="width:100%">
+                <tr>
+                  <td>
+                 ${saveTodo()}
+                  </td>
+                  <td>
+                 ${saveLink()}
+                  </td>
+                </tr>
+               
+                <tr>
+                  <td colspan="2" >
+                  <iframe  id="id_footer_frame" src="https://codelearn.io/sharing/build-url-shortener-by-django" height="1000" width="100%"></iframe>
+
+                  </td>
+                
+                </tr>
+
+
+				</table>
+
+        
+      </div>
+
+
 		</div>
+    
 
 
 
 	</div>
-  
   `;
 
   const node = document.createElement("div");
@@ -819,11 +1086,31 @@ function focusInputReply() {
   document.getElementById("input_rep").addEventListener("focus", focusQuestion);
 }
 
+function onChangeInputDefault() {
+  const input_default = document.getElementById("input_default").value.trim();
+  const answer = getAnswer();
+
+  if (input_default.length === 0 || Number(input_default) > answer.length) {
+    document.getElementById("run_speak").style.backgroundColor = "gray";
+    document.getElementById("run_speak").disabled = true;
+  } else {
+    document.getElementById("run_speak").style.backgroundColor = "#4caf50";
+    document.getElementById("run_speak").disabled = false;
+  }
+}
+
+function eventChange() {
+  document
+    .getElementById("input_default")
+    .addEventListener("input", onChangeInputDefault);
+}
+
 window.onload = () => {
   console.log("page is fully loaded");
   createElementPage();
   handleModal();
   eventClick();
+  // eventChange();
   initQuestion();
   focusInputReply();
 };
