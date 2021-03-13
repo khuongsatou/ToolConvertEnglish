@@ -574,8 +574,17 @@ function getAnswer() {
   return answer;
 }
 
+function x5Text(text) {
+  let t = "";
+  for (let i = 0; i < 5; i++) {
+    t += text + ".   \n";
+  }
+  return t;
+}
+
 function runSpeak() {
-  const myText = document.getElementById("answer").innerText;
+  let myText = document.getElementById("answer").innerText;
+  myText = x5Text(myText);
   const msg = new SpeechSynthesisUtterance(myText);
   window.speechSynthesis.speak(msg);
 }
@@ -850,7 +859,9 @@ function saveLink() {
 
 function saveTodo() {
   let strHref = "";
-  list_todo_note.map((row) => {
+
+  list_todo_note.map((row, key) => {
+    strHref += key == 0 ? "" : "\n<---------------->\n";
     strHref += `<h6>${row.id}. ${row.title}</h6>`;
     row.data.map((col) => {
       strHref += `<p style="color:#fff;font-size:10;">B${col.id}. `;
@@ -858,15 +869,7 @@ function saveTodo() {
     });
   });
 
-  strHref += "\n<---------------->\n";
-
   return strHref;
-}
-
-function runJquery() {
-  return `function myFunction() {
-  alert("Hello! I am an alert box!");
-    }`;
 }
 
 // Tạo trang bằng javascript
@@ -1021,7 +1024,7 @@ function createElementPage() {
 
 
        <div class="modal-footer">
-       				<table style="width:100%">
+       				<table style="width:100%" id="id_footer_frame">
                 <tr>
                   <td>
                  ${saveTodo()}
@@ -1033,9 +1036,9 @@ function createElementPage() {
                
                 <tr>
                   <td colspan="2" >
-                  <iframe  id="id_footer_frame" src="https://codelearn.io/sharing/build-url-shortener-by-django" height="1000" width="100%"></iframe>
+              <!--    <iframe  id="id_footer_frame" src="https://codelearn.io/sharing/build-url-shortener-by-django" height="1000" width="100%"></iframe>
 
-                  </td>
+                  </td> -->
                 
                 </tr>
 
