@@ -1,4 +1,63 @@
+const list_link_note_life = [
+  {
+    id: 1,
+    data: [
+      {
+        id: 1,
+        title: "Không được bán sức khỏe lấy tiền.",
+        why:
+          "Nó sẽ tệ hơn, Bệnh mệt mỗi, suy nhược, -> Không có được gì cả. -> Lỗ.",
+      },
+      {
+        id: 2,
+        title: "Bệnh thì làm sao mình tiếp tục làm.",
+        why: "Lỗ",
+      },
+      {
+        id: 3,
+        title: "Đổi giấc ngủ lấy tiền.",
+        why: "Lỗ",
+      },
+      {
+        id: 4,
+        title: "Trạng thái chất lượng",
+        why: "-> Chạy bộ -> đi bộ -> thiếu vắng niềm đau.",
+      },
+      {
+        id: 6,
+        title: "Cách giải quyết việc khó là giải quyết trong lúc thăng hoa",
+        why: "Chuẩn bị về mặc thể chất và sức khỏe.",
+      },
+    ],
+  },
+];
+
 const list_link_note = [
+  {
+    id: 11,
+    title: "Trang chủ Django",
+    link: "https://docs.djangoproject.com/en/3.1/contents/",
+  },
+  {
+    id: 11,
+    title: "Django django-restframework-serializer",
+    link: "https://github.com/sonnhfit/django-restframework-serializer.git",
+  },
+  {
+    id: 10,
+    title: "Django Movie recommender",
+    link: "https://github.com/sonnhfit/movie_recommender.git",
+  },
+  {
+    id: 9,
+    title: "Django Base",
+    link: "https://github.com/sonnhfit/django_base.git",
+  },
+  {
+    id: 8,
+    title: "15p chất lượng.",
+    link: "https://soundcloud.com/web5ngay/tap-107-dieu-toi-hoi-han-nhat",
+  },
   {
     id: 7,
     title: "Demo JSON",
@@ -41,6 +100,94 @@ const list_link_note = [
 
 const list_todo_note = [
   {
+    id: 8,
+    title: "priceguide.cards Khác",
+    data: [
+      {
+        id: 1,
+        title: "1.List \n2.Detail \n3.Bình luận fb \n4. Video Youtube ",
+      },
+      {
+        id: 2,
+        title:
+          "1.Label \n2.Content \n3.Categories \n4. Count \n5. Search \n6.FAQ collapsible ",
+      },
+      {
+        id: 3,
+        title:
+          "1.Đa ngôn ngữ \n2.Thay đổi giao diện \n3.Đổi đơn vị tiền tệ \n4. Drawble left \n5. Profile \n6. Message ",
+      },
+    ],
+  },
+  {
+    id: 7,
+    title: "priceguide.cards Colletions",
+    data: [
+      {
+        id: 1,
+        title: "1.Paging \n2.Select Data \n3.Query Data",
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "priceguide.cards Top 100",
+    data: [
+      {
+        id: 1,
+        title: "1.TabTopBar \n2.Select Data \n3.Query Data",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "priceguide.cards Login/Fogot/Register",
+    data: [
+      {
+        id: 1,
+        title:
+          "1.Tạo form login \n2.Xác thực CaptCha \n3.Đăng nhập bằng FB/GOO/TWITTER/TWITCH",
+      },
+      {
+        id: 2,
+        title: "1. SendMail \n2. Validate Email/Username/Password/Confirm Pass",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "priceguide.cards Box Breaks",
+    data: [
+      {
+        id: 1,
+        title: "1. Select Option \n2.Table Ajax \n3. Prompt",
+      },
+      {
+        id: 2,
+        title: "1. Chart rectange \n2. Chart line \n 3. Chart Area 1 & 2",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "priceguide.cards Trang chủ",
+    data: [
+      {
+        id: 1,
+        title: "1.Tạo ra slider \n2.Chuyển slider \n3.Animation Slider",
+      },
+      {
+        id: 2,
+        title:
+          "1. Auto Scroll đến một vi trí bất bì \n2. Card view \n3. Hover và scale \n 4. ",
+      },
+      {
+        id: 3,
+        title: "1. TabTopNavigate Fixed \n2. Footer\n",
+      },
+    ],
+  },
+  {
     id: 2,
     title: "Dự án django",
     data: [
@@ -68,19 +215,28 @@ const list_todo_note = [
     data: [
       {
         id: 1,
-        title: "Tích hợp thông báo cho ios.",
+        title: "Tích hợp thông báo cho ios. OK",
       },
       {
         id: 2,
-        title: "Fix lỗi khi đăng 1 bài viết mới thì không comment được.",
+        title:
+          "Fix lỗi khi đăng 1 bài viết mới thì không comment được. Không thấy",
       },
       {
         id: 3,
-        title: "Điều chỉnh kích thước location.",
+        title: "Điều chỉnh kích thước location. OK",
       },
       {
         id: 4,
-        title: "Cho text comment / reply/ post 14",
+        title: "Cho text comment / reply/ post 14 OK",
+      },
+      {
+        id: 5,
+        title: "Fix Margin comment",
+      },
+      {
+        id: 6,
+        title: "Fix album Lỗi loading",
       },
     ],
   },
@@ -885,19 +1041,12 @@ function createElementPage() {
 		<!-- Modal content -->
 		<div class="modal-content" style="margin:auto;">
 			<div class="modal-header">
-
-      <a href="./data.json">nhấp vô</a>
-    
-      
-
-      
-  
         
         
-				<table style="width:100%">
+				<table>
 					<tr>
 						<td colspan="3">
-							<h2 id="question" style="color:white;" class="id_h2"></h2>
+							<h2 id="question" style="color:white;margin-left:16px;" class="id_h2"></h2>
 
 							<input id="number_rand" value="" type="hidden"></input>
 							<input id="id_qs" value="1" type="hidden"></input>
@@ -1034,16 +1183,12 @@ function createElementPage() {
                   </td>
                 </tr>
                
-                <tr>
-                  <td colspan="2" >
-              <!--    <iframe  id="id_footer_frame" src="https://codelearn.io/sharing/build-url-shortener-by-django" height="1000" width="100%"></iframe>
-
-                  </td> -->
-                
-                </tr>
+               
 
 
 				</table>
+
+        <div style="height:500px;"></div>
 
         
       </div>

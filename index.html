@@ -20,18 +20,11 @@
 		<div class="modal-content" style="margin:auto;">
 			<div class="modal-header">
 
-				<a href="./data.json">nhấp vô</a>
 
-
-
-
-
-
-
-				<table style="width:100%">
+				<table>
 					<tr>
 						<td colspan="3">
-							<h2 id="question" style="color:white;" class="id_h2"></h2>
+							<h2 id="question" style="color:white;margin-left:16px;" class="id_h2"></h2>
 
 							<input id="number_rand" value="" type="hidden"></input>
 							<input id="id_qs" value="1" type="hidden"></input>
@@ -158,28 +151,22 @@
 
 
 			<div class="modal-footer">
-				<table style="width:100%">
+				<table style="width:100%" id="id_footer_frame">
 					<tr>
 						<td>
-							<!-- ${saveTodo()} -->
+							${saveTodo()}
 						</td>
 						<td>
-							<!-- ${saveLink()} -->
+							${saveLink()}
 						</td>
 					</tr>
 
-					<tr>
-						<td colspan="2">
-							<!-- <iframe id="id_footer_frame"
-								src="https://codelearn.io/sharing/build-url-shortener-by-django" height="1000"
-								width="100%"></iframe> -->
 
-						</td>
-
-					</tr>
 
 
 				</table>
+
+				<div style="height:500"></div>
 
 
 			</div>
