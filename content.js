@@ -1,5 +1,17 @@
 const list_link_note_life = [
   {
+    id: 2,
+    title: "Danh sách những việc rút cạn năng lượng",
+    data: [
+      {
+        id: 1,
+        title: "Lướt youtube",
+        why:
+          "Còn người chỉ có tối da 4 tiếng tập trung hoàn toàn dừng để nó qua đi.",
+      },
+    ],
+  },
+  {
     id: 1,
     data: [
       {
@@ -34,7 +46,17 @@ const list_link_note_life = [
 
 const list_link_note = [
   {
-    id: 11,
+    id: 13,
+    title: "Trang chủ Django NguyenThaiSon",
+    link: "https://viblo.asia/u/NguyenThaiSon",
+  },
+  {
+    id: 13,
+    title: "Trang chủ Django Giang dở 3",
+    link: "https://docs.djangoproject.com/en/3.1/intro/tutorial03/",
+  },
+  {
+    id: 12,
     title: "Trang chủ Django",
     link: "https://docs.djangoproject.com/en/3.1/contents/",
   },
@@ -193,19 +215,39 @@ const list_todo_note = [
     data: [
       {
         id: 1,
-        title: "Phân tích  web demo",
+        title: "Phân tích  web demo OK",
       },
       {
         id: 2,
-        title: "Chuẩn bị source.",
+        title: "Chuẩn bị source. OK",
       },
       {
         id: 3,
-        title: "Chuẩn bị swappger",
+        title: "Chuẩn bị swappge OK",
       },
       {
         id: 4,
-        title: "Tìm thư viện tương ứng với phân tích.",
+        title: "Tìm thư viện tương ứng với phân tích. ",
+      },
+      {
+        id: 5,
+        title: "Set up docker OK",
+      },
+      {
+        id: 6,
+        title: `Các status code <a style="color:#fff;" href="https://viblo.asia/p/tim-hieu-ve-http-status-code-lA7GKwx5GKZQ">Status Code Here</a> <p style="color:#82ce34"> NOTE SUMMARY: 200:list, 201:create, 404:not found, 500: Server </p>`,
+      },
+      {
+        id: 7,
+        title: `HTTP request methods <a style="color:#fff;" href="https://viblo.asia/p/cung-tim-hieu-ve-http-request-methods-djeZ1xBoKWz">HTTP request here</a> <p style="color:#82ce34"> NOTE SUMMARY: PUT: override, DELETE: delete resource server </p>`,
+      },
+      {
+        id: 8,
+        title: `Học về Serializer <a style="color:#fff;" href="https://www.django-rest-framework.org/tutorial/1-serialization/">Create Update rest framework</a> <p style="color:#82ce34">  </p>`,
+      },
+      {
+        id: 9,
+        title: `Học về Graph API và Selery <a style="color:#fff;" href="https://www.youtube.com/watch?v=UX_Stez_fzk">Link here</a> <p style="color:#82ce34">  </p>`,
       },
     ],
   },
@@ -232,11 +274,15 @@ const list_todo_note = [
       },
       {
         id: 5,
-        title: "Fix Margin comment",
+        title: "Fix Margin comment (Không tìm thấy)",
       },
       {
         id: 6,
-        title: "Fix album Lỗi loading",
+        title: "Fix album Lỗi loading (tạm thời chưa thực hiện)",
+      },
+      {
+        id: 7,
+        title: "Fix không đăng nhập được trên gennymotion. OK",
       },
     ],
   },
@@ -339,7 +385,8 @@ const question_4 = [
   { id: 1, en: "i am good at teamwork.", vi: "tôi giỏi làm việc nhóm." },
   {
     id: 2,
-    en: "during my school time, i had many projects woking in group of 3 or 4.",
+    en:
+      "during my school time, i had many projects working in group of 3 or 4.",
     vi:
       "trong thời gian đi học, tôi đã có nhiều dự án thực hiện theo nhóm 3 hoặc 4 người.",
   },
@@ -507,23 +554,6 @@ const storeSample = {
   question_9: ["1"],
 };
 
-// const qsRep = {
-//   question_1: question_1,
-//   question_2: question_2,
-//   question_3: question_3,
-//   question_4: question_4,
-//   question_5: question_5,
-//   question_6: question_6,
-//   question_7: question_7,
-//   question_8: question_8,
-//   question_9: question_9,
-// };
-
-const getOptionQS = (array) => {
-  array.shift();
-  return array.map((item, key) => (item = { ...item, id: key + 1 }));
-};
-
 let qsRepOption = {
   question_1: question_1,
   question_2: question_2,
@@ -536,15 +566,46 @@ let qsRepOption = {
   question_9: question_9,
 };
 
-const qsRep = {};
+let storeRandom = [];
+let storeSpecified = [];
 
+// Bỏ mấy câu đã vược qua nơi chọn.
+// B1. Tính độ dài từng question. OK
+// B2. Nếu độ dài thằng nào nhỏ hơn số vừa target thì không xuất hiện.-> Kết quả cuối cùng là các câu có từ 3 option trở lên.
+
+const limit_qs_show = 2;
+const len_qs = [];
+
+// Lấy độ già của phần tử
+Object.keys(qsRepOption).map((qs, key) => {
+  len_qs.push({ id: key + 1, count: qsRepOption[qs].length });
+});
+
+// Lấy các phần tử có giới hạn cao hơn limit
+const len_qs_limit = len_qs.filter((item) => item.count <= limit_qs_show);
+len_qs_limit.map((item) => {
+  const index = qsNum.findIndex((v) => v == item.id);
+  qsNum.splice(index, 1);
+  list_question.splice(index, 1);
+});
+
+console.log("%ccontent.js line:592 object", "color: #007acc;", len_qs_limit);
+
+// Loại bỏ các phần từ
+const getOptionQS = (array) => {
+  for (let index = 0; index < limit_qs_show; index++) {
+    array.shift();
+  }
+  return array.map((item, key) => (item = { ...item, id: key + 1 }));
+};
+
+const qsRep = {};
 Object.keys(qsRepOption).map((qs) => {
   qsRep[qs] = getOptionQS(qsRepOption[qs]);
   return qsRep;
 });
 
-let storeRandom = [];
-let storeSpecified = [];
+qsRepOption = qsRep;
 
 // --- version 1
 // B1. Lấy câu hỏi hiển thị. Nhập vào câu trả lời
@@ -725,7 +786,7 @@ function closeModal() {
 
 function getAnswer() {
   const number_rand = document.getElementById("number_rand").value;
-  const answer = qsRep[`question_${Number(number_rand) + 1}`];
+  const answer = qsRepOption[`question_${Number(number_rand) + 1}`];
 
   return answer;
 }
