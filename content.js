@@ -288,7 +288,21 @@ const list_todo_note = [
   },
 ];
 
-const list_question = [
+const list_todo_video = [
+  {
+    id: 1,
+    title: "Son Nguyen Django",
+    data: [
+      {
+        id: 1,
+        title: "Ajax",
+        video: "https://youtu.be/pX5-t1J8-sQ",
+      },
+    ],
+  },
+];
+
+const listQuestion_data = [
   "1. Tell me a little bit about yourself?",
   "2. Can you tell me how you heard about this position?",
   "3. What attracted you to our company?",
@@ -300,7 +314,7 @@ const list_question = [
   "9. Do you have any questions for me, about the company or the position?",
 ];
 
-const list_question_vi = [
+const listQuestionVi_data = [
   "1. Kể cho tôi một ít về bạn?",
   "2. Bạn có thể cho tôi biết bạn nghe nói về vị trí này như thế nào không?",
   "3. Điều gì đã thu hút bạn đến với công ty của chúng tôi?",
@@ -540,7 +554,18 @@ const question_9 = [
   },
 ];
 
-const qsNum = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const qsNum_data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const qsText_data = [
+  "question_1",
+  "question_2",
+  "question_3",
+  "question_4",
+  "question_5",
+  "question_6",
+  "question_7",
+  "question_8",
+  "question_9",
+];
 
 const storeSample = {
   question_1: ["1"],
@@ -554,7 +579,7 @@ const storeSample = {
   question_9: ["1"],
 };
 
-let qsRepOption = {
+const qsRepOption_data = {
   question_1: question_1,
   question_2: question_2,
   question_3: question_3,
@@ -574,22 +599,26 @@ let storeSpecified = [];
 // B2. Nếu độ dài thằng nào nhỏ hơn số vừa target thì không xuất hiện.-> Kết quả cuối cùng là các câu có từ 3 option trở lên.
 
 const limit_qs_show = 2;
-const len_qs = [];
 
+const store_qs = [];
 // Lấy độ già của phần tử
-Object.keys(qsRepOption).map((qs, key) => {
-  len_qs.push({ id: key + 1, count: qsRepOption[qs].length });
+Object.keys(qsRepOption_data).map((qs, key) => {
+  console.log("%ccontent.js line:606 object", "color: #007acc;", qs);
+  store_qs.push({
+    id: key + 1,
+    count: qsRepOption_data[qs].length,
+    data: qsRepOption_data[qs],
+    qs: listQuestion_data[key],
+    qs_key: qsText_data[key],
+    qs_vi: listQuestionVi_data[key],
+  });
 });
 
 // Lấy các phần tử có giới hạn cao hơn limit
-const len_qs_limit = len_qs.filter((item) => item.count <= limit_qs_show);
-len_qs_limit.map((item) => {
-  const index = qsNum.findIndex((v) => v == item.id);
-  qsNum.splice(index, 1);
-  list_question.splice(index, 1);
-});
-
-console.log("%ccontent.js line:592 object", "color: #007acc;", len_qs_limit);
+const qsFilter = store_qs.filter((item) => item.count > limit_qs_show);
+// Update QS Num
+const qsNum = qsFilter.map((item) => item.id);
+const list_question = qsFilter.map((item) => item.qs);
 
 // Loại bỏ các phần từ
 const getOptionQS = (array) => {
@@ -598,14 +627,6 @@ const getOptionQS = (array) => {
   }
   return array.map((item, key) => (item = { ...item, id: key + 1 }));
 };
-
-const qsRep = {};
-Object.keys(qsRepOption).map((qs) => {
-  qsRep[qs] = getOptionQS(qsRepOption[qs]);
-  return qsRep;
-});
-
-qsRepOption = qsRep;
 
 // --- version 1
 // B1. Lấy câu hỏi hiển thị. Nhập vào câu trả lời
@@ -786,9 +807,11 @@ function closeModal() {
 
 function getAnswer() {
   const number_rand = document.getElementById("number_rand").value;
-  const answer = qsRepOption[`question_${Number(number_rand) + 1}`];
-
-  return answer;
+  const answer = qsFilter.find((obj) => obj.id === Number(qsNum[number_rand]));
+  const oldData = JSON.parse(JSON.stringify(answer.data));
+  const data = getOptionQS(oldData);
+  console.log("%ccontent.js line:810 object", "color: #007acc;", data);
+  return data;
 }
 
 function x5Text(text) {
@@ -1089,6 +1112,41 @@ function saveTodo() {
   return strHref;
 }
 
+// <iframe
+//   width="560"
+//   height="315"
+//   src="https://www.youtube.com/embed/pX5-t1J8-sQ"
+//   frameborder="0"
+//   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//   allowfullscreen
+// ></iframe>
+
+function saveVideo() {
+  let strHref = "";
+
+  list_todo_video.map((row, key) => {
+    strHref += key == 0 ? "" : "\n<---------------->\n";
+    strHref += `<h6>${row.id}. ${row.title}</h6>`;
+    row.data.map((col) => {
+      strHref += `<p style="color:#fff;font-size:10;">B${col.id}. `;
+      strHref += `${col.title} </p>`;
+      // strHref += `<video  width="320" height="176">`;
+      // strHref += `<source src="${col.video}" type="video/mp4">`;
+      // strHref += `</video>`;
+
+      strHref += `<iframe  width="100%" height="176" src="https://www.youtube.com/embed/pX5-t1J8-sQ" frameborder="0" allowfullscreen  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">`;
+      strHref += `</iframe>`;
+    });
+  });
+
+  //   <video id="myVideo" width="320" height="176">
+  //   <source src="mov_bbb.mp4" type="video/mp4">
+  //   Your browser does not support HTML5 video.
+  // </video>
+
+  return strHref;
+}
+
 // Tạo trang bằng javascript
 function createElementPage() {
   const html_page = `<h1>Tool write by Khương</h1>
@@ -1240,8 +1298,10 @@ function createElementPage() {
                  ${saveTodo()}
                   </td>
                   <td>
+                ${saveVideo()}
                  ${saveLink()}
                   </td>
+
                 </tr>
                
                
@@ -1249,7 +1309,9 @@ function createElementPage() {
 
 				</table>
 
-        <div style="height:500px;"></div>
+        <div style="height:100px;">
+        
+        </div>
 
         
       </div>
