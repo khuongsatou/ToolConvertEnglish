@@ -1,369 +1,55 @@
-const list_link_note_life = [
-  {
-    id: 2,
-    title: "Danh sách những việc rút cạn năng lượng",
-    data: [
-      {
-        id: 1,
-        title: "Lướt youtube",
-        why:
-          "Còn người chỉ có tối da 4 tiếng tập trung hoàn toàn dừng để nó qua đi.",
-      },
-    ],
-  },
-  {
-    id: 1,
-    data: [
-      {
-        id: 1,
-        title: "Không được bán sức khỏe lấy tiền.",
-        why:
-          "Nó sẽ tệ hơn, Bệnh mệt mỗi, suy nhược, -> Không có được gì cả. -> Lỗ.",
-      },
-      {
-        id: 2,
-        title: "Bệnh thì làm sao mình tiếp tục làm.",
-        why: "Lỗ",
-      },
-      {
-        id: 3,
-        title: "Đổi giấc ngủ lấy tiền.",
-        why: "Lỗ",
-      },
-      {
-        id: 4,
-        title: "Trạng thái chất lượng",
-        why: "-> Chạy bộ -> đi bộ -> thiếu vắng niềm đau.",
-      },
-      {
-        id: 6,
-        title: "Cách giải quyết việc khó là giải quyết trong lúc thăng hoa",
-        why: "Chuẩn bị về mặc thể chất và sức khỏe.",
-      },
-    ],
-  },
-];
+const list_link_note_life = [];
 
 const list_link_note = [
   {
-    id: 13,
-    title: "Trang chủ Django NguyenThaiSon",
-    link: "https://viblo.asia/u/NguyenThaiSon",
-  },
-  {
-    id: 13,
-    title: "Trang chủ Django Giang dở 3",
-    link: "https://docs.djangoproject.com/en/3.1/intro/tutorial03/",
-  },
-  {
-    id: 12,
-    title: "Trang chủ Django",
-    link: "https://docs.djangoproject.com/en/3.1/contents/",
-  },
-  {
-    id: 11,
-    title: "Django django-restframework-serializer",
-    link: "https://github.com/sonnhfit/django-restframework-serializer.git",
-  },
-  {
-    id: 10,
-    title: "Django Movie recommender",
-    link: "https://github.com/sonnhfit/movie_recommender.git",
-  },
-  {
-    id: 9,
-    title: "Django Base",
-    link: "https://github.com/sonnhfit/django_base.git",
-  },
-  {
-    id: 8,
-    title: "15p chất lượng.",
-    link: "https://soundcloud.com/web5ngay/tap-107-dieu-toi-hoi-han-nhat",
-  },
-  {
-    id: 7,
-    title: "Demo JSON",
-    link: "https://khuongsatou.github.io/ToolConvertEnglish/",
-  },
-  {
-    id: 6,
-    title: "Django CMS",
-    link:
-      "https://django-cms.readthedocs.io/en/latest/introduction/02-templates_placeholders.html#templates",
-  },
-  {
-    id: 5,
-    title: "Source Django My Shop",
-    link: "file:///Users/apple/Desktop/python_project/my-shop/",
-  },
-  {
-    id: 4,
-    title: "Ecommerce Django",
-    link: "https://github.com/divanov11/django_ecommerce_mod5/",
-  },
-  {
-    id: 3,
-    title: "Demo ecommerce",
-    link:
-      "https://codewithsteps.herokuapp.com/part/47920dbd-be36-45ea-afae-a81851ccaeaf/",
-  },
-  {
-    id: 2,
-    title: "Awesome Django REST Framework",
-    link: "https://github.com/nioperas06/awesome-django-rest-framework",
-  },
-  {
     id: 1,
-    title: "Blog API Django REST Framework",
-    link:
-      "https://github.com/codingforentrepreneurs/Blog-API-with-Django-Rest-Framework",
+    title: "",
+    link: "https://styled-components.com/docs/basics#react-native",
   },
 ];
 
-const list_todo_note = [
-  {
-    id: 8,
-    title: "priceguide.cards Khác",
-    data: [
-      {
-        id: 1,
-        title: "1.List \n2.Detail \n3.Bình luận fb \n4. Video Youtube ",
-      },
-      {
-        id: 2,
-        title:
-          "1.Label \n2.Content \n3.Categories \n4. Count \n5. Search \n6.FAQ collapsible ",
-      },
-      {
-        id: 3,
-        title:
-          "1.Đa ngôn ngữ \n2.Thay đổi giao diện \n3.Đổi đơn vị tiền tệ \n4. Drawble left \n5. Profile \n6. Message ",
-      },
-    ],
-  },
-  {
-    id: 7,
-    title: "priceguide.cards Colletions",
-    data: [
-      {
-        id: 1,
-        title: "1.Paging \n2.Select Data \n3.Query Data",
-      },
-    ],
-  },
-  {
-    id: 6,
-    title: "priceguide.cards Top 100",
-    data: [
-      {
-        id: 1,
-        title: "1.TabTopBar \n2.Select Data \n3.Query Data",
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "priceguide.cards Login/Fogot/Register",
-    data: [
-      {
-        id: 1,
-        title:
-          "1.Tạo form login \n2.Xác thực CaptCha \n3.Đăng nhập bằng FB/GOO/TWITTER/TWITCH",
-      },
-      {
-        id: 2,
-        title: "1. SendMail \n2. Validate Email/Username/Password/Confirm Pass",
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: "priceguide.cards Box Breaks",
-    data: [
-      {
-        id: 1,
-        title: "1. Select Option \n2.Table Ajax \n3. Prompt",
-      },
-      {
-        id: 2,
-        title: "1. Chart rectange \n2. Chart line \n 3. Chart Area 1 & 2",
-      },
-    ],
-  },
-  {
-    id: 3,
-    title: "priceguide.cards Trang chủ",
-    data: [
-      {
-        id: 1,
-        title: "1.Tạo ra slider \n2.Chuyển slider \n3.Animation Slider",
-      },
-      {
-        id: 2,
-        title:
-          "1. Auto Scroll đến một vi trí bất bì \n2. Card view \n3. Hover và scale \n 4. ",
-      },
-      {
-        id: 3,
-        title: "1. TabTopNavigate Fixed \n2. Footer\n",
-      },
-    ],
-  },
-  {
-    id: 2,
-    title: "Dự án django",
-    data: [
-      {
-        id: 1,
-        title: "Phân tích  web demo OK",
-      },
-      {
-        id: 2,
-        title: "Chuẩn bị source. OK",
-      },
-      {
-        id: 3,
-        title: "Chuẩn bị swappge OK",
-      },
-      {
-        id: 4,
-        title: "Tìm thư viện tương ứng với phân tích. ",
-      },
-      {
-        id: 5,
-        title: "Set up docker OK",
-      },
-      {
-        id: 6,
-        title: `Các status code <a style="color:#fff;" href="https://viblo.asia/p/tim-hieu-ve-http-status-code-lA7GKwx5GKZQ">Status Code Here</a> <p style="color:#82ce34"> NOTE SUMMARY: 200:list, 201:create, 404:not found, 500: Server </p>`,
-      },
-      {
-        id: 7,
-        title: `HTTP request methods <a style="color:#fff;" href="https://viblo.asia/p/cung-tim-hieu-ve-http-request-methods-djeZ1xBoKWz">HTTP request here</a> <p style="color:#82ce34"> NOTE SUMMARY: PUT: override, DELETE: delete resource server </p>`,
-      },
-      {
-        id: 8,
-        title: `Học về Serializer <a style="color:#fff;" href="https://www.django-rest-framework.org/tutorial/1-serialization/">Create Update rest framework</a> <p style="color:#82ce34">  </p>`,
-      },
-      {
-        id: 9,
-        title: `Học về Graph API và Selery <a style="color:#fff;" href="https://www.youtube.com/watch?v=UX_Stez_fzk">Link here</a> <p style="color:#82ce34">  </p>`,
-      },
-    ],
-  },
-  {
-    id: 1,
-    title: "Fix bug Kidbox",
-    data: [
-      {
-        id: 1,
-        title: "Tích hợp thông báo cho ios. OK",
-      },
-      {
-        id: 2,
-        title:
-          "Fix lỗi khi đăng 1 bài viết mới thì không comment được. Không thấy",
-      },
-      {
-        id: 3,
-        title: "Điều chỉnh kích thước location. OK",
-      },
-      {
-        id: 4,
-        title: "Cho text comment / reply/ post 14 OK",
-      },
-      {
-        id: 5,
-        title: "Fix Margin comment (Không tìm thấy)",
-      },
-      {
-        id: 6,
-        title: "Fix album Lỗi loading (tạm thời chưa thực hiện)",
-      },
-      {
-        id: 7,
-        title: "Fix không đăng nhập được trên gennymotion. OK",
-      },
-    ],
-  },
-];
+const list_todo_note = [];
 
-const list_todo_video = [
-  {
-    id: 1,
-    title: "Son Nguyen Django",
-    data: [
-      {
-        id: 1,
-        title: "Ajax",
-        video: "https://youtu.be/pX5-t1J8-sQ",
-      },
-    ],
-  },
-];
+const list_todo_video = [];
 
 const listQuestion_data = [
-  "1. Tell me a little bit about yourself?",
-  "2. Can you tell me how you heard about this position?",
-  "3. What attracted you to our company?",
-  "4. What is your greatest strength?",
-  "5. What is your greatest weakness?",
-  "6. Tell me about a time when you had a stressful situation?",
-  "7. Where do you see yourself in 5 years?",
-  "8. What is your salary expectation?",
-  "9. Do you have any questions for me, about the company or the position?",
+  "1. Hello Ms.Anh, I'm Nguyen Thanks so much for coming?",
+  "2. Have a seat, please How are you doing this morning?",
+  // "3. What attracted you to our company?",
+  // "4. What is your greatest strength?",
+  // "5. What is your greatest weakness?",
+  // "6. Tell me about a time when you had a stressful situation?",
+  // "7. Where do you see yourself in 5 years?",
+  // "8. What is your salary expectation?",
+  // "9. Do you have any questions for me, about the company or the position?",
 ];
 
 const listQuestionVi_data = [
   "1. Kể cho tôi một ít về bạn?",
   "2. Bạn có thể cho tôi biết bạn nghe nói về vị trí này như thế nào không?",
-  "3. Điều gì đã thu hút bạn đến với công ty của chúng tôi?",
-  "4. Điểm mạnh nhất của bạn là gì?",
-  "5. Điểm yếu lớn nhất của bạn là gì?",
-  "6. Hãy kể cho tôi nghe về khoảng thời gian bạn gặp phải tình huống căng thẳng?",
-  "7. Bạn thấy mình ở đâu trong 5 năm nữa?",
-  "8. Mức lương kỳ vọng của bạn là bao nhiêu?",
-  "9. Bạn có câu hỏi nào cho tôi, về công ty hay vị trí không?",
+  // "3. Điều gì đã thu hút bạn đến với công ty của chúng tôi?",
+  // "4. Điểm mạnh nhất của bạn là gì?",
+  // "5. Điểm yếu lớn nhất của bạn là gì?",
+  // "6. Hãy kể cho tôi nghe về khoảng thời gian bạn gặp phải tình huống căng thẳng?",
+  // "7. Bạn thấy mình ở đâu trong 5 năm nữa?",
+  // "8. Mức lương kỳ vọng của bạn là bao nhiêu?",
+  // "9. Bạn có câu hỏi nào cho tôi, về công ty hay vị trí không?",
 ];
 
 const question_1 = [
   {
     id: 1,
-    en:
-      "sure, i studied at cao thang technical college and i graduated in 2019 with a degree in automobile engineering.",
-    vi:
-      "chắc chắn rồi, tôi học trường cao đẳng kỹ thuật cao thắng và tôi tốt nghiệp năm 2019 với bằng kỹ sư ô tô.",
-  },
-  {
-    id: 2,
-    en:
-      'at school, i took part in "mini racing car" competition and some other volunteer activities such as green summer campaign, and blood donation.',
-    vi:
-      'ở trường, em tham gia cuộc thi "đua xe mini" và một số hoạt động tình nguyện khác như chiến dịch mùa hè xanh, hiến máu nhân đạo.',
-  },
-  {
-    id: 3,
-    en:
-      "in the five final year, i have had an internship at toyota factory for 6 months helps me get more experiences in repairing automobiles.",
-    vi:
-      "năm năm cuối, tôi đã có 6 tháng thực tập tại nhà máy toyota giúp tôi có thêm kinh nghiệm sửa chữa ô tô.",
+    en: "It 's my pleasure Thanks so much for meeting with me.",
+    vi: "Đó là niềm vui của tôi Cảm ơn rất nhiều vì đã gặp tôi.",
   },
 ];
 
 const question_2 = [
   {
-    id: 1,
-    en:
-      "a friend of mine saw the position listed on vietnamwork website and he forwarded it to me.",
-    vi:
-      "một người bạn của tôi đã nhìn thấy vị trí được ghi trên trang web vietnamwork và anh ấy đã chuyển tiếp cho tôi.",
-  },
-  {
     id: 2,
-    en:
-      "so i spent time on your website learning about this position and your company.",
+    en: "That 's great! I'm glad to have an interview for my favorite company.",
     vi:
-      "vì vậy, tôi đã dành thời gian trên trang web của bạn để tìm hiểu về vị trí này và công ty của bạn.",
+      "Thật tuyệt! Tôi rất vui khi có một cuộc phỏng vấn cho công ty yêu thích của tôi.",
   },
 ];
 
@@ -534,7 +220,7 @@ const question_9 = [
   },
   {
     id: 2,
-    en: "1 do i have to work in shifts.",
+    en: "1 do you have to work in shifts.",
     vi: "1 bạn có phải làm việc theo ca.",
   },
   {
@@ -554,41 +240,41 @@ const question_9 = [
   },
 ];
 
-const qsNum_data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const qsNum_data = [1, 2];
 const qsText_data = [
   "question_1",
   "question_2",
-  "question_3",
-  "question_4",
-  "question_5",
-  "question_6",
-  "question_7",
-  "question_8",
-  "question_9",
+  // "question_3",
+  // "question_4",
+  // "question_5",
+  // "question_6",
+  // "question_7",
+  // "question_8",
+  // "question_9",
 ];
 
 const storeSample = {
   question_1: ["1"],
   question_2: ["1"],
-  question_3: ["1"],
-  question_4: ["1"],
-  question_5: ["1"],
-  question_6: ["1"],
-  question_7: ["1"],
-  question_8: ["1"],
-  question_9: ["1"],
+  // question_3: ["1"],
+  // question_4: ["1"],
+  // question_5: ["1"],
+  // question_6: ["1"],
+  // question_7: ["1"],
+  // question_8: ["1"],
+  // question_9: ["1"],
 };
 
 const qsRepOption_data = {
   question_1: question_1,
   question_2: question_2,
-  question_3: question_3,
-  question_4: question_4,
-  question_5: question_5,
-  question_6: question_6,
-  question_7: question_7,
-  question_8: question_8,
-  question_9: question_9,
+  // question_3: question_3,
+  // question_4: question_4,
+  // question_5: question_5,
+  // question_6: question_6,
+  // question_7: question_7,
+  // question_8: question_8,
+  // question_9: question_9,
 };
 
 let storeRandom = [];
@@ -598,7 +284,7 @@ let storeSpecified = [];
 // B1. Tính độ dài từng question. OK
 // B2. Nếu độ dài thằng nào nhỏ hơn số vừa target thì không xuất hiện.-> Kết quả cuối cùng là các câu có từ 3 option trở lên.
 
-const limit_qs_show = 0;
+const limit_qs_show = 1;
 
 const store_qs = [];
 // Lấy độ già của phần tử
@@ -713,16 +399,6 @@ function checkDuplicateSpecified(randNumber, onLyQS) {
 
 function getQuestion() {
   let randNumber = randomQS();
-
-  //______ Bỏ
-  // let onLyQS = getSpecified();
-  // if (onLyQS.length > 0) {
-  //   // randNumber = randomElementInArray(onLyQS);
-  //   // randNumber = checkDuplicateSpecified(randNumber, onLyQS);
-  //   // console.log("%ccontent.js line:298 object", "color: #007acc;", randNumber);
-  // } else {
-  // }
-  //______ END Bỏ
 
   randNumber = checkDuplicate(randNumber);
   const qs = list_question[randNumber];
@@ -895,12 +571,10 @@ function contineQS(rep, answer) {
 
   // Reset câu trả lời
   document.getElementById("input_rep").value = "";
-  // document.getElementById("id_qs").value = "1";
 
   runSpeak();
   initQuestion();
   getActiveSampleSave();
-  // setSampleDefault();
 }
 
 function remove(array, element) {
@@ -909,24 +583,7 @@ function remove(array, element) {
 
 function setSampleDefault() {
   const input_default = document.getElementById("input_default").value;
-  // const number_rand = document.getElementById("number_rand").value;
-  // const count = Object.keys(qsRep).map((row) => {
-  //   return qsRep[row].length;
-  // });
 
-  // const qsLimit = count.filter(function (x) {
-  //   return x == input_default;
-  // }).length;
-  // console.log("%ccontent.js line:551 object", "color: #007acc;", count);
-  // console.log("%ccontent.js line:552 object", "color: #007acc;", qsLimit);
-
-  // for (let index = 0; index < 2; index++) {
-  //   if (count.includes(Number(input_default))) {
-
-  //   }
-  // }
-
-  // console.log("%ccontent.js line:543 object", "color: #007acc;", count);
   for (let index = 0; index < qsNum.length; index++) {
     createElementSample(1);
     const answer = getAnswer();
@@ -945,6 +602,10 @@ function setSampleDefault() {
   }
 }
 
+function getAnswerLang(lang = "en") {
+  return findAnswerByID()[`${lang}`].toLowerCase();
+}
+
 // B2 [` Kiểm tra `]
 function checkReply() {
   const rep = document.getElementById("input_rep").value.toLowerCase();
@@ -952,7 +613,7 @@ function checkReply() {
   if (rep) {
     const find = findAnswerByID();
     if (find) {
-      const answer = findAnswerByID().en.toLowerCase();
+      const answer = getAnswerLang("en");
 
       // So sánh câu trả lời và đáp án
       if (rep === answer) {
@@ -1152,7 +813,9 @@ function createElementPage() {
   const html_page = `<h1>Tool write by Khương</h1>
 	<h2>Extension</h2>
   
+
 	<!-- The Modal -->
+
 	<div id="myModal" class="modal">
   
 		<!-- Modal content -->
@@ -1164,8 +827,10 @@ function createElementPage() {
 					<tr>
 						<td colspan="3">
 							<h2 id="question" style="color:white;margin-left:16px;" class="id_h2"></h2>
+
 							<input id="number_rand" value="" type="hidden"></input>
 							<input id="id_qs" value="1" type="hidden"></input>
+
 						</td>
 						<td>
 							<div class="fomrgroup" style="flex-direction: row;justify-content: flex-end;" id="id_limit">
@@ -1181,6 +846,7 @@ function createElementPage() {
 								<input type="number" name="input_default" id="input_default" value="2"
 									style="width:100px;float: right;" class="input_form" min="1">
 							</div>
+
 						</td> -->
             <td>
 							<div class="fomrgroup" style="flex-direction: row;justify-content: flex-end;" id="id_limit">
@@ -1190,18 +856,29 @@ function createElementPage() {
 						
 						</td>
 					</tr>
+
+
 				</table>
+
+
+
+
+
 				<button
 					style="display:none;background-color:white;border:none;opacity: 0.6;border-radius:90px;margin-left:10px;"
 					id="id_settings">~(Settings)~</button>
+
+
 				<div class="fomrgroup" style="display: none;flex-direction: row;justify-content: flex-end;"
 					id="id_limit">
 					<input type="text" name="input_rep" id="input_limit" value="" style="width:100px;"
 						class="input_form">
 				</div>
+
 			</div>
 			<div class="modal-body" style="clear:bold;">
 				<table style="width:100%" id="id_table_sample">
+
 				</table>
 				<form action="#" id="myForm" autocomplete="off">
 					<div class="fomrgroup">
@@ -1209,6 +886,7 @@ function createElementPage() {
 							class="input_form" autofocus>
 						<input type="hidden" id="input_rep_first" value="1" style="width:100%;">
 					</div>
+
 					<div class="fomrgroup" style="margin-top:10px;">
 						<button id="run_speak" type="button" class="input_submit">Kiểm tra</button>
 					</div>
@@ -1241,6 +919,7 @@ function createElementPage() {
 								</h6>
 							</div>
 						</td>
+
 					</tr>
 					<tr>
 						<td>
@@ -1248,7 +927,9 @@ function createElementPage() {
 								<h6 id="reply_correct" style="text-align: left;color:#4bb543;" class="id_h5"></h6>
 							</div>
 						</td>
+
 					</tr>
+
 					<tr>
 						<td>
 							<div style="width:100%;display: flex;">
@@ -1259,9 +940,18 @@ function createElementPage() {
 										style="color:#333;">~(Speak)~</span></button>
 							</div>
 						</td>
+
 					</tr>
+
 				</table>
+
+
+
+
+
 			</div>
+
+
        <div class="modal-footer">
        				<table style="width:100%" id="id_footer_frame">
                 <tr>
@@ -1272,17 +962,27 @@ function createElementPage() {
                 ${saveVideo()}
                  ${saveLink()}
                   </td>
+
                 </tr>
                
                
+
+
 				</table>
+
         <div style="height:100px;">
         
         </div>
+
         
       </div>
+
+
 		</div>
     
+
+
+
 	</div>
   `;
 
