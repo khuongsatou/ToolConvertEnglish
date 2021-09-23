@@ -191,3 +191,307 @@ const question_9 = [
     vi: "4 bạn có thể cho tôi biết về đội mà tôi sẽ làm việc cùng.",
   },
 ];
+
+const list_link_note_life = [
+  {
+    id: 2,
+    title: "Danh sách những việc rút cạn năng lượng",
+    data: [
+      {
+        id: 1,
+        title: "Lướt youtube",
+        why:
+          "Còn người chỉ có tối da 4 tiếng tập trung hoàn toàn dừng để nó qua đi.",
+      },
+    ],
+  },
+  {
+    id: 1,
+    data: [
+      {
+        id: 1,
+        title: "Không được bán sức khỏe lấy tiền.",
+        why:
+          "Nó sẽ tệ hơn, Bệnh mệt mỗi, suy nhược, -> Không có được gì cả. -> Lỗ.",
+      },
+      {
+        id: 2,
+        title: "Bệnh thì làm sao mình tiếp tục làm.",
+        why: "Lỗ",
+      },
+      {
+        id: 3,
+        title: "Đổi giấc ngủ lấy tiền.",
+        why: "Lỗ",
+      },
+      {
+        id: 4,
+        title: "Trạng thái chất lượng",
+        why: "-> Chạy bộ -> đi bộ -> thiếu vắng niềm đau.",
+      },
+      {
+        id: 6,
+        title: "Cách giải quyết việc khó là giải quyết trong lúc thăng hoa",
+        why: "Chuẩn bị về mặc thể chất và sức khỏe.",
+      },
+    ],
+  },
+];
+
+const list_link_note = [
+  {
+    id: 13,
+    title: "Trang chủ Django NguyenThaiSon",
+    link: "https://viblo.asia/u/NguyenThaiSon",
+  },
+  {
+    id: 13,
+    title: "Trang chủ Django Giang dở 3",
+    link: "https://docs.djangoproject.com/en/3.1/intro/tutorial03/",
+  },
+  {
+    id: 12,
+    title: "Trang chủ Django",
+    link: "https://docs.djangoproject.com/en/3.1/contents/",
+  },
+  {
+    id: 11,
+    title: "Django django-restframework-serializer",
+    link: "https://github.com/sonnhfit/django-restframework-serializer.git",
+  },
+  {
+    id: 10,
+    title: "Django Movie recommender",
+    link: "https://github.com/sonnhfit/movie_recommender.git",
+  },
+  {
+    id: 9,
+    title: "Django Base",
+    link: "https://github.com/sonnhfit/django_base.git",
+  },
+  {
+    id: 8,
+    title: "15p chất lượng.",
+    link: "https://soundcloud.com/web5ngay/tap-107-dieu-toi-hoi-han-nhat",
+  },
+  {
+    id: 7,
+    title: "Demo JSON",
+    link: "https://khuongsatou.github.io/ToolConvertEnglish/",
+  },
+  {
+    id: 6,
+    title: "Django CMS",
+    link:
+      "https://django-cms.readthedocs.io/en/latest/introduction/02-templates_placeholders.html#templates",
+  },
+  {
+    id: 5,
+    title: "Source Django My Shop",
+    link: "file:///Users/apple/Desktop/python_project/my-shop/",
+  },
+  {
+    id: 4,
+    title: "Ecommerce Django",
+    link: "https://github.com/divanov11/django_ecommerce_mod5/",
+  },
+  {
+    id: 3,
+    title: "Demo ecommerce",
+    link:
+      "https://codewithsteps.herokuapp.com/part/47920dbd-be36-45ea-afae-a81851ccaeaf/",
+  },
+  {
+    id: 2,
+    title: "Awesome Django REST Framework",
+    link: "https://github.com/nioperas06/awesome-django-rest-framework",
+  },
+  {
+    id: 1,
+    title: "Blog API Django REST Framework",
+    link:
+      "https://github.com/codingforentrepreneurs/Blog-API-with-Django-Rest-Framework",
+  },
+];
+
+const list_todo_note = [
+  {
+    id: 8,
+    title: "priceguide.cards Khác",
+    data: [
+      {
+        id: 1,
+        title: "1.List \n2.Detail \n3.Bình luận fb \n4. Video Youtube ",
+      },
+      {
+        id: 2,
+        title:
+          "1.Label \n2.Content \n3.Categories \n4. Count \n5. Search \n6.FAQ collapsible ",
+      },
+      {
+        id: 3,
+        title:
+          "1.Đa ngôn ngữ \n2.Thay đổi giao diện \n3.Đổi đơn vị tiền tệ \n4. Drawble left \n5. Profile \n6. Message ",
+      },
+    ],
+  },
+  {
+    id: 7,
+    title: "priceguide.cards Colletions",
+    data: [
+      {
+        id: 1,
+        title: "1.Paging \n2.Select Data \n3.Query Data",
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "priceguide.cards Top 100",
+    data: [
+      {
+        id: 1,
+        title: "1.TabTopBar \n2.Select Data \n3.Query Data",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "priceguide.cards Login/Fogot/Register",
+    data: [
+      {
+        id: 1,
+        title:
+          "1.Tạo form login \n2.Xác thực CaptCha \n3.Đăng nhập bằng FB/GOO/TWITTER/TWITCH",
+      },
+      {
+        id: 2,
+        title: "1. SendMail \n2. Validate Email/Username/Password/Confirm Pass",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "priceguide.cards Box Breaks",
+    data: [
+      {
+        id: 1,
+        title: "1. Select Option \n2.Table Ajax \n3. Prompt",
+      },
+      {
+        id: 2,
+        title: "1. Chart rectange \n2. Chart line \n 3. Chart Area 1 & 2",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "priceguide.cards Trang chủ",
+    data: [
+      {
+        id: 1,
+        title: "1.Tạo ra slider \n2.Chuyển slider \n3.Animation Slider",
+      },
+      {
+        id: 2,
+        title:
+          "1. Auto Scroll đến một vi trí bất bì \n2. Card view \n3. Hover và scale \n 4. ",
+      },
+      {
+        id: 3,
+        title: "1. TabTopNavigate Fixed \n2. Footer\n",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Dự án django",
+    data: [
+      {
+        id: 1,
+        title: "Phân tích  web demo OK",
+      },
+      {
+        id: 2,
+        title: "Chuẩn bị source. OK",
+      },
+      {
+        id: 3,
+        title: "Chuẩn bị swappge OK",
+      },
+      {
+        id: 4,
+        title: "Tìm thư viện tương ứng với phân tích. ",
+      },
+      {
+        id: 5,
+        title: "Set up docker OK",
+      },
+      {
+        id: 6,
+        title: `Các status code <a style="color:#fff;" href="https://viblo.asia/p/tim-hieu-ve-http-status-code-lA7GKwx5GKZQ">Status Code Here</a> <p style="color:#82ce34"> NOTE SUMMARY: 200:list, 201:create, 404:not found, 500: Server </p>`,
+      },
+      {
+        id: 7,
+        title: `HTTP request methods <a style="color:#fff;" href="https://viblo.asia/p/cung-tim-hieu-ve-http-request-methods-djeZ1xBoKWz">HTTP request here</a> <p style="color:#82ce34"> NOTE SUMMARY: PUT: override, DELETE: delete resource server </p>`,
+      },
+      {
+        id: 8,
+        title: `Học về Serializer <a style="color:#fff;" href="https://www.django-rest-framework.org/tutorial/1-serialization/">Create Update rest framework</a> <p style="color:#82ce34">  </p>`,
+      },
+      {
+        id: 9,
+        title: `Học về Graph API và Selery <a style="color:#fff;" href="https://www.youtube.com/watch?v=UX_Stez_fzk">Link here</a> <p style="color:#82ce34">  </p>`,
+      },
+    ],
+  },
+  {
+    id: 1,
+    title: "Fix bug Kidbox",
+    data: [
+      {
+        id: 1,
+        title: "Tích hợp thông báo cho ios. OK",
+      },
+      {
+        id: 2,
+        title:
+          "Fix lỗi khi đăng 1 bài viết mới thì không comment được. Không thấy",
+      },
+      {
+        id: 3,
+        title: "Điều chỉnh kích thước location. OK",
+      },
+      {
+        id: 4,
+        title: "Cho text comment / reply/ post 14 OK",
+      },
+      {
+        id: 5,
+        title: "Fix Margin comment (Không tìm thấy)",
+      },
+      {
+        id: 6,
+        title: "Fix album Lỗi loading (tạm thời chưa thực hiện)",
+      },
+      {
+        id: 7,
+        title: "Fix không đăng nhập được trên gennymotion. OK",
+      },
+    ],
+  },
+];
+
+const list_todo_video = [
+  {
+    id: 1,
+    title: "Son Nguyen Django",
+    data: [
+      {
+        id: 1,
+        title: "Ajax",
+        video: "https://youtu.be/pX5-t1J8-sQ",
+      },
+    ],
+  },
+];
